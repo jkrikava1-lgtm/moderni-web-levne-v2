@@ -1,0 +1,70 @@
+---
+---
+
+<section class="relative min-h-screen flex flex-col justify-end pb-16 md:pb-24 overflow-hidden" id="hero">
+  <!-- Ambient light -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-accent/5 rounded-full blur-[200px]"></div>
+
+  <!-- Main content -->
+  <div class="relative z-10 max-w-[1400px] mx-auto px-8 w-full">
+    <!-- Small label -->
+    <div class="mb-8 overflow-hidden">
+      <div class="reveal text-text-secondary text-xs tracking-[0.3em] uppercase">
+        Web design & development studio
+      </div>
+    </div>
+
+    <!-- Hero headline — split text -->
+    <h1 class="split-text text-[clamp(2.5rem,8vw,8rem)] font-bold leading-[0.95] tracking-tight" id="hero-text">
+      Stavíme weby,<br/>
+      které <span class="text-accent">prodávají</span>
+    </h1>
+
+    <!-- Bottom bar -->
+    <div class="mt-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 border-t border-dark-border pt-8">
+      <p class="text-text-secondary text-base md:text-lg max-w-md leading-relaxed reveal">
+        Moderní design, čistý kód, měřitelné výsledky.
+        Žádné šablony — vše na míru vašemu podnikání.
+      </p>
+
+      <div class="flex items-center gap-6 reveal reveal-delay-1">
+        <a
+          href="#kontakt"
+          class="magnetic-btn group flex items-center gap-3 text-white"
+          data-hover
+        >
+          <span class="text-sm tracking-wider uppercase">Začít projekt</span>
+          <span class="w-12 h-12 rounded-full border border-accent/40 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
+            <svg class="w-4 h-4 text-accent group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll line -->
+  <div class="absolute bottom-0 left-8 w-px h-16 bg-gradient-to-b from-transparent to-accent/30"></div>
+</section>
+
+<!-- Hero text animation -->
+<script>
+  const heroText = document.getElementById('hero-text');
+  if (heroText) {
+    const html = heroText.innerHTML;
+    // Wrap each character (but preserve HTML tags)
+    let charIndex = 0;
+    const newHtml = html.replace(/(<[^>]+>)|([^<\s])/g, (match, tag, char) => {
+      if (tag) return tag;
+      charIndex++;
+      return `<span class="char" style="transition-delay: ${charIndex * 0.025}s">${char}</span>`;
+    });
+    heroText.innerHTML = newHtml;
+
+    // Trigger after loader
+    setTimeout(() => {
+      heroText.classList.add('revealed');
+    }, 1800);
+  }
+</script>

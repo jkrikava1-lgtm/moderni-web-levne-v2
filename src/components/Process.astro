@@ -1,0 +1,47 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Discovery',
+    desc: 'Pochopíme váš byznys, cíle a konkurenci. Definujeme strategii a rozsah projektu.',
+  },
+  {
+    num: '02',
+    title: 'Design',
+    desc: 'Navrhneme vizuál a UX, který odráží vaši značku a vede návštěvníky k akci.',
+  },
+  {
+    num: '03',
+    title: 'Development',
+    desc: 'Naprogramujeme web v moderních technologiích. Čistý kód, rychlé načítání, responzivní design.',
+  },
+  {
+    num: '04',
+    title: 'Launch',
+    desc: 'Otestujeme, nasadíme a předáme. Včetně zaškolení a podpory po spuštění.',
+  },
+];
+---
+
+<section id="proces" class="py-32 md:py-44 bg-dark-soft">
+  <div class="max-w-[1400px] mx-auto px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 reveal">
+      <div>
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-4">Proces</div>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+          Jak <span class="text-accent">pracujeme</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-dark-border rounded-xl overflow-hidden">
+      {steps.map((step, i) => (
+        <div class={`reveal reveal-delay-${i} bg-dark-soft p-8 md:p-10 group`} data-hover>
+          <div class="text-accent text-xs font-mono mb-8">{step.num}</div>
+          <h3 class="text-xl font-semibold mb-4 group-hover:text-accent transition-colors duration-500">{step.title}</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
