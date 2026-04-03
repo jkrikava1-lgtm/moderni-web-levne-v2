@@ -48,23 +48,28 @@
   <div class="absolute bottom-0 left-8 w-px h-16 bg-gradient-to-b from-transparent to-accent/30"></div>
 </section>
 
-<!-- Hero text animation -->
+<!-- Hero text animation — word by word with 3D flip -->
 <script>
   const heroText = document.getElementById('hero-text');
   if (heroText) {
-    const html = heroText.innerHTML;
-    // Wrap each character (but preserve HTML tags)
-    let charIndex = 0;
-    const newHtml = html.replace(/(<[^>]+>)|([^<\s])/g, (match, tag, char) => {
-      if (tag) return tag;
-      charIndex++;
-      return `<span class="char" style="transition-delay: ${charIndex * 0.025}s">${char}</span>`;
+    // Split into lines by <br/>, then words
+    const lines = heroText.innerHTML.split(/<br\s*\/?>/i);
+    let wordIndex = 0;
+    const processedLines = lines.map((line) => {
+      // Split on spaces but preserve HTML tags
+      const parts = line.split(/(\s+|<[^>]+>)/);
+      return parts.map((part) => {
+        if (part.match(/^</) || part.match(/^\s*$/)) return part;
+        wordIndex++;
+        const delay = wordIndex * 0.12;
+        return `<span class="word"><span class="word-inner" style="transition-delay: ${delay}s">${part}</span></span>`;
+      }).join('');
     });
-    heroText.innerHTML = newHtml;
+    heroText.innerHTML = processedLines.join('<br/>');
 
     // Trigger after loader
     setTimeout(() => {
       heroText.classList.add('revealed');
-    }, 1800);
+    }, 1600);
   }
 </script>
