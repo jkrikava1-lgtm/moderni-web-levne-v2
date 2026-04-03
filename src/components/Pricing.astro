@@ -1,0 +1,48 @@
+---
+const reasons = [
+  {
+    title: 'Žádné skryté poplatky',
+    desc: 'Cenu znáte předem. Žádné příplatky za každou úpravu nebo telefonát.',
+  },
+  {
+    title: 'Bez měsíčních paušálů',
+    desc: 'Zaplatíte jednorázově za hotový web. Žádný pronájem, žádné předplatné.',
+  },
+  {
+    title: 'Moderní technologie = nižší cena',
+    desc: 'Díky efektivním nástrojům dokážu dodat kvalitní web rychleji a levněji než klasické agentury.',
+  },
+];
+---
+
+<section class="py-24 md:py-32 border-t border-dark-border">
+  <div class="max-w-[1400px] mx-auto px-8">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+      <!-- Left: message -->
+      <div class="reveal">
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-4">Proč u nás</div>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+          Kvalitní web<br/><span class="text-accent">za férovou cenu</span>
+        </h2>
+        <p class="text-text-secondary leading-relaxed max-w-md">
+          Agentury účtují statisíce. Freelanceři na šablonách nemají kvalitu.
+          Já spojuji obojí — moderní design a čistý kód za cenu, která dává smysl.
+        </p>
+        <div class="mt-8 flex items-baseline gap-2">
+          <span class="text-4xl md:text-5xl font-bold text-accent">od 9 900 Kč</span>
+          <span class="text-text-muted text-sm">za kompletní web</span>
+        </div>
+      </div>
+
+      <!-- Right: reasons -->
+      <div class="space-y-0 reveal reveal-delay-1">
+        {reasons.map((reason, i) => (
+          <div class={`py-6 ${i < reasons.length - 1 ? 'border-b border-dark-border' : ''}`}>
+            <h3 class="text-lg font-semibold mb-2">{reason.title}</h3>
+            <p class="text-text-secondary text-sm leading-relaxed">{reason.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
