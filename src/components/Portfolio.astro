@@ -35,7 +35,7 @@ const projects = [
 ];
 ---
 
-<section id="prace" class="py-32 md:py-44 horizontal-scroll-section">
+<section id="prace" class="py-32 md:py-44 horizontal-scroll-section min-h-[200vh]">
   <div class="max-w-[1400px] mx-auto px-8 mb-16">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
       <div>
@@ -104,7 +104,7 @@ const projects = [
 
   if (track && container) {
     let scrollAmount = 0;
-    const speed = 0.5;
+    const speed = 0.85;
 
     window.addEventListener('scroll', () => {
       const rect = container.getBoundingClientRect();
