@@ -8,9 +8,14 @@
     </a>
 
     <div class="hidden md:flex items-center gap-10">
-      {['Služby', 'Práce', 'Proces', 'Kontakt'].map((label) => (
+      {[
+        { label: 'Služby', href: '#sluzby' },
+        { label: 'Práce', href: '#prace' },
+        { label: 'Proces', href: '#proces' },
+        { label: 'Kontakt', href: '#kontakt' },
+      ].map(({ label, href }) => (
         <a
-          href={`#${label.toLowerCase().replace('á', 'a').replace('ů', 'u')}`}
+          href={href}
           class="text-white/60 text-xs tracking-widest uppercase hover:text-white transition-colors duration-500"
           data-hover
         >
