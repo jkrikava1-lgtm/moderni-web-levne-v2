@@ -55,22 +55,8 @@ const projects = [
               class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
 
-            <!-- Subtle overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
-
-            <!-- Browser chrome -->
-            <div class="absolute top-5 left-5 flex gap-1.5 z-10">
-              <div class="w-2 h-2 rounded-full bg-white/20"></div>
-              <div class="w-2 h-2 rounded-full bg-white/20"></div>
-              <div class="w-2 h-2 rounded-full bg-white/20"></div>
-            </div>
-
-            <!-- URL bar -->
-            <div class="absolute top-4 left-14 right-5 z-10">
-              <div class="bg-white/5 backdrop-blur-sm rounded-md px-3 py-1 text-[10px] text-white/30 truncate">
-                {project.url.replace('https://', '')}
-              </div>
-            </div>
+            <!-- Bottom gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
             <!-- Hover overlay -->
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-700 flex items-center justify-center">
