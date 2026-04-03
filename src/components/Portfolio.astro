@@ -59,10 +59,10 @@ const projects = [
           href={project.url}
           target={project.url !== '#' ? '_blank' : undefined}
           rel={project.url !== '#' ? 'noopener noreferrer' : undefined}
-          class="shrink-0 w-[80vw] sm:w-[45vw] md:w-[30vw] lg:w-[23vw] group block"
+          class="shrink-0 w-[85vw] sm:w-[70vw] md:w-[50vw] lg:w-[40vw] group block"
           data-hover
         >
-          <div class="relative aspect-[3/4] bg-dark-card rounded-xl overflow-hidden">
+          <div class="relative aspect-[16/10] bg-dark-card rounded-xl overflow-hidden">
             <!-- Screenshot -->
             <img
               src={project.image}
@@ -114,32 +114,28 @@ const projects = [
   }
 
   @keyframes portfolio-scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-1 * (23vw + 1.25rem) * 4));
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-1 * (40vw + 1.25rem) * 4)); }
   }
 
   @media (max-width: 1024px) {
     @keyframes portfolio-scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-1 * (30vw + 1.25rem) * 4)); }
+      100% { transform: translateX(calc(-1 * (50vw + 1.25rem) * 4)); }
     }
   }
 
   @media (max-width: 768px) {
     @keyframes portfolio-scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-1 * (45vw + 1.25rem) * 4)); }
+      100% { transform: translateX(calc(-1 * (70vw + 1.25rem) * 4)); }
     }
   }
 
   @media (max-width: 640px) {
     @keyframes portfolio-scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-1 * (80vw + 1.25rem) * 4)); }
+      100% { transform: translateX(calc(-1 * (85vw + 1.25rem) * 4)); }
     }
   }
 </style>
