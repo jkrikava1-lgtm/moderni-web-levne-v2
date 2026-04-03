@@ -7,7 +7,6 @@ const projects = [
     url: 'https://uspornevytapeni.cz',
     image: '/portfolio/uspornevytapeni.png',
     description: 'Web pro specialistu na tepelná čerpadla a úspory energií.',
-    size: 'large',
   },
   {
     title: 'Union Power',
@@ -16,7 +15,6 @@ const projects = [
     url: 'https://unionpower.cz',
     image: '/portfolio/unionpower.png',
     description: 'Prezentace lisovny plastů s moderním designem.',
-    size: 'small',
   },
   {
     title: '2Brothers Music Factory',
@@ -25,7 +23,6 @@ const projects = [
     url: 'https://2brothers.cz',
     image: '/portfolio/2brothers.png',
     description: 'Web pro DJ duo s tmavým, energickým vizuálem.',
-    size: 'small',
   },
   {
     title: 'Batmetal',
@@ -34,15 +31,13 @@ const projects = [
     url: '#',
     image: '/portfolio/batmetal.png',
     description: 'Průmyslové přípravky pro automobilový průmysl. Připravuje se.',
-    size: 'large',
   },
 ];
 ---
 
-<section id="prace" class="py-32 md:py-44">
-  <div class="max-w-[1400px] mx-auto px-8">
-    <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 reveal">
+<section id="prace" class="py-32 md:py-44 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-8 mb-16">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
       <div>
         <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-4">Portfolio</div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
@@ -53,18 +48,21 @@ const projects = [
         Každý projekt je unikátní příběh. Zde je výběr těch, na které jsme nejvíc pyšní.
       </p>
     </div>
+  </div>
 
-    <!-- Asymmetric grid -->
-    <div class="grid md:grid-cols-2 gap-5">
-      {projects.map((project, i) => (
+  <!-- Infinite loop carousel -->
+  <div class="relative" id="portfolio-carousel">
+    <div class="flex gap-5 portfolio-track" id="portfolio-track">
+      {/* Render cards 3x for seamless loop */}
+      {[...projects, ...projects, ...projects].map((project) => (
         <a
           href={project.url}
           target={project.url !== '#' ? '_blank' : undefined}
           rel={project.url !== '#' ? 'noopener noreferrer' : undefined}
-          class={`reveal reveal-delay-${(i % 2) + 1} group block ${project.size === 'large' ? 'md:col-span-2' : ''}`}
+          class="shrink-0 w-[80vw] sm:w-[45vw] md:w-[30vw] lg:w-[23vw] group block"
           data-hover
         >
-          <div class={`relative ${project.size === 'large' ? 'h-[40vh] md:h-[70vh]' : 'h-[35vh] md:h-[50vh]'} bg-dark-card rounded-xl overflow-hidden`}>
+          <div class="relative aspect-[3/4] bg-dark-card rounded-xl overflow-hidden">
             <!-- Screenshot -->
             <img
               src={project.image}
@@ -72,33 +70,31 @@ const projects = [
               class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-[1.2s] ease-out group-hover:scale-[1.05]"
             />
 
-            <!-- Permanent gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/20 group-hover:from-black/40 group-hover:via-transparent group-hover:to-transparent transition-all duration-700"></div>
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/50 group-hover:via-transparent transition-all duration-700"></div>
 
-            <!-- Top: category + year -->
-            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
-              <span class="px-3 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-xs text-white/60 tracking-wider uppercase">
+            <!-- Top badge -->
+            <div class="absolute top-4 left-4 z-10">
+              <span class="px-2.5 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-white/50 tracking-wider uppercase">
                 {project.category}
               </span>
-              <span class="text-white/30 text-xs font-mono">{project.year}</span>
             </div>
 
-            <!-- Bottom: title + description + arrow -->
-            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
-              <div class="flex items-end justify-between gap-6">
-                <div>
-                  <h3 class="text-xl md:text-2xl font-semibold text-white group-hover:text-accent transition-colors duration-500">
-                    {project.title}
-                  </h3>
-                  <p class="text-white/40 text-sm mt-2 max-w-md group-hover:text-white/60 transition-colors duration-500">
-                    {project.description}
-                  </p>
-                </div>
-                <div class="shrink-0 w-12 h-12 rounded-full border border-white/15 flex items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 group-hover:border-accent group-hover:bg-accent transition-all duration-500">
-                  <svg class="w-4 h-4 text-white group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
-                  </svg>
-                </div>
+            <!-- Bottom info -->
+            <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+              <h3 class="text-base font-semibold text-white group-hover:text-accent transition-colors duration-500">
+                {project.title}
+              </h3>
+              <p class="text-white/30 text-xs mt-1.5 leading-relaxed group-hover:text-white/50 transition-colors duration-500">
+                {project.description}
+              </p>
+
+              <!-- Arrow -->
+              <div class="mt-4 flex items-center gap-2 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                <span class="text-accent text-xs tracking-wider uppercase">Zobrazit</span>
+                <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
               </div>
             </div>
           </div>
@@ -107,3 +103,43 @@ const projects = [
     </div>
   </div>
 </section>
+
+<style>
+  .portfolio-track {
+    animation: portfolio-scroll 25s linear infinite;
+  }
+
+  .portfolio-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes portfolio-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-1 * (23vw + 1.25rem) * 4));
+    }
+  }
+
+  @media (max-width: 1024px) {
+    @keyframes portfolio-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-1 * (30vw + 1.25rem) * 4)); }
+    }
+  }
+
+  @media (max-width: 768px) {
+    @keyframes portfolio-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-1 * (45vw + 1.25rem) * 4)); }
+    }
+  }
+
+  @media (max-width: 640px) {
+    @keyframes portfolio-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-1 * (80vw + 1.25rem) * 4)); }
+    }
+  }
+</style>
