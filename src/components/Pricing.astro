@@ -24,13 +24,13 @@ const reasons = [
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
           Kvalitní web<br/><span class="text-accent">za férovou cenu</span>
         </h2>
-        <p class="text-text-secondary leading-relaxed max-w-md">
+        <p class="text-text-secondary text-lg leading-relaxed max-w-md">
           Agentury účtují statisíce. Freelanceři na šablonách nemají kvalitu.
           Já spojuji obojí — moderní design a čistý kód za cenu, která dává smysl.
         </p>
         <div class="mt-8 flex items-baseline gap-2">
           <span class="text-4xl md:text-5xl font-bold text-accent">od 9 900 Kč</span>
-          <span class="text-text-muted text-sm">za kompletní web</span>
+          <span class="text-text-muted text-base">za kompletní web</span>
         </div>
       </div>
 
@@ -39,7 +39,7 @@ const reasons = [
         {reasons.map((reason, i) => (
           <div class={`py-6 ${i < reasons.length - 1 ? 'border-b border-dark-border' : ''}`}>
             <h3 class="text-lg font-semibold mb-2">{reason.title}</h3>
-            <p class="text-text-secondary text-sm leading-relaxed">{reason.desc}</p>
+            <p class="text-text-secondary text-base leading-relaxed">{reason.desc}</p>
           </div>
         ))}
       </div>
