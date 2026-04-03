@@ -35,6 +35,14 @@ body {
 
 a, button, [role="button"] {
   cursor: none;
+  position: relative;
+}
+
+/* Expand click area to match cursor ring (~20px radius) */
+a::before, button::before, [role="button"]::before {
+  content: '';
+  position: absolute;
+  inset: -16px;
 }
 
 /* ===== CUSTOM CURSOR ===== */
