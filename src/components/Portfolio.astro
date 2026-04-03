@@ -106,38 +106,46 @@ const projects = [
   </div>
 </section>
 
-<style>
-  .portfolio-track {
-    animation: portfolio-scroll 25s linear infinite;
-  }
+<script>
+  // JS-driven infinite scroll for pixel-perfect seamless loop
+  const track = document.getElementById('portfolio-track');
+  if (track) {
+    let pos = 0;
+    const speed = 0.5; // px per frame
+    let paused = false;
+    let rafId: number;
 
-  .portfolio-track:hover {
-    animation-play-state: paused;
-  }
+    // Calculate width of one set of cards
+    const cards = track.children;
+    const totalCards = cards.length;
+    const oneSetCount = totalCards / 3; // we rendered 3 copies
+    let oneSetWidth = 0;
 
-  @keyframes portfolio-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-1 * (40vw + 1.25rem) * 4)); }
-  }
-
-  @media (max-width: 1024px) {
-    @keyframes portfolio-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-1 * (50vw + 1.25rem) * 4)); }
+    function measureSet() {
+      oneSetWidth = 0;
+      const gap = 20; // gap-5 = 1.25rem = 20px
+      for (let i = 0; i < oneSetCount; i++) {
+        oneSetWidth += (cards[i] as HTMLElement).offsetWidth + gap;
+      }
     }
-  }
 
-  @media (max-width: 768px) {
-    @keyframes portfolio-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-1 * (70vw + 1.25rem) * 4)); }
-    }
-  }
+    measureSet();
+    window.addEventListener('resize', measureSet);
 
-  @media (max-width: 640px) {
-    @keyframes portfolio-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-1 * (85vw + 1.25rem) * 4)); }
+    function animate() {
+      if (!paused) {
+        pos -= speed;
+        if (Math.abs(pos) >= oneSetWidth) {
+          pos += oneSetWidth;
+        }
+        track.style.transform = `translateX(${pos}px)`;
+      }
+      rafId = requestAnimationFrame(animate);
     }
+
+    track.addEventListener('mouseenter', () => { paused = true; });
+    track.addEventListener('mouseleave', () => { paused = false; });
+
+    animate();
   }
-</style>
+</script>
