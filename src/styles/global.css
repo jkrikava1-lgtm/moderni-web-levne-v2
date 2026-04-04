@@ -159,6 +159,14 @@ body.cursor-hover .cursor-ring {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
+/* Tablet: fix hero gap */
+@media (max-width: 1024px) {
+  #hero {
+    min-height: 70vh !important;
+  }
+}
+
+/* Mobile: disable all animations, fix layout */
 @media (max-width: 767px) {
   .reveal, .reveal-delay-1, .reveal-delay-2, .reveal-delay-3 {
     opacity: 1 !important;
@@ -174,7 +182,21 @@ body.cursor-hover .cursor-ring {
   }
   #hero {
     min-height: auto !important;
-    padding-top: 6rem !important;
+    padding-top: 5rem !important;
+  }
+  /* Static portfolio instead of carousel */
+  .portfolio-track {
+    animation: none !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    padding: 0 1rem !important;
+  }
+  .portfolio-track > a {
+    width: 100% !important;
+  }
+  /* Hide duplicated carousel cards (keep only first set) */
+  .portfolio-track > a:nth-child(n+6) {
+    display: none !important;
   }
 }
 
