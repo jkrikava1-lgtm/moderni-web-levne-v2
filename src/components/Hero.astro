@@ -1,7 +1,7 @@
 ---
 ---
 
-<section class="relative pt-28 md:pt-40 pb-16 md:pb-24 overflow-hidden" id="hero">
+<section class="relative pt-20 md:pt-28 pb-16 md:pb-24 overflow-hidden" id="hero">
   <!-- Ambient light -->
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] md:w-[800px] h-[400px] md:h-[600px] bg-accent/5 rounded-full blur-[120px] md:blur-[200px]"></div>
 
@@ -98,17 +98,3 @@
   }
 </script>
 
-<!-- H1 fade-in animation after loader -->
-<script>
-  const h1 = document.getElementById('hero-h1');
-  if (h1) {
-    h1.style.opacity = '0';
-    h1.style.transform = 'translateY(30px)';
-    h1.style.transition = 'opacity 1s ease, transform 1s ease';
-
-    setTimeout(() => {
-      h1.style.opacity = '1';
-      h1.style.transform = 'translateY(0)';
-    }, 1200);
-  }
-</script>
