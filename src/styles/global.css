@@ -163,6 +163,18 @@ body.cursor-hover .cursor-ring {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
+/* Mobile: skip reveal animations, show everything */
+@media (max-width: 767px) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-content {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ===== MAGNETIC BUTTON ===== */
 .magnetic-btn {
   position: relative;
