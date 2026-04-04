@@ -190,20 +190,6 @@ body.cursor-hover .cursor-ring {
     min-height: auto !important;
     padding-top: 5rem !important;
   }
-  /* Static portfolio instead of carousel */
-  .portfolio-track {
-    animation: none !important;
-    flex-wrap: wrap !important;
-    gap: 1rem !important;
-    padding: 0 1rem !important;
-  }
-  .portfolio-track > a {
-    width: 100% !important;
-  }
-  /* Hide duplicated carousel cards (keep only first set) */
-  .portfolio-track > a:nth-child(n+6) {
-    display: none !important;
-  }
 }
 
 /* ===== MAGNETIC BUTTON ===== */
