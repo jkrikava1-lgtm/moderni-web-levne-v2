@@ -9,7 +9,7 @@
   <canvas id="particles-canvas" class="hidden md:block"></canvas>
 
   <!-- Main content -->
-  <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8 w-full hero-content">
+  <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8 w-full">
     <!-- Small label -->
     <div class="mb-6 md:mb-8">
       <div class="text-text-secondary text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase">
@@ -118,8 +118,6 @@
 
   // Trigger after loader
   setTimeout(() => {
-    const content = document.querySelector('.hero-content');
-    if (content) content.classList.add('visible');
     if (h1) h1.classList.add('revealed');
   }, 1500);
 </script>
