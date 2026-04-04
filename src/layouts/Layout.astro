@@ -73,22 +73,20 @@ const ogImage = `${siteUrl}/og-image.png`;
 
     <slot />
 
-    <!-- Lenis smooth scroll — desktop only -->
+    <!-- Lenis smooth scroll -->
     <script>
       import Lenis from 'lenis';
 
-      if (window.innerWidth >= 768) {
-        const lenis = new Lenis({
-          duration: 1.2,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        });
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
 
-        function raf(time: number) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
+      function raf(time: number) {
+        lenis.raf(time);
         requestAnimationFrame(raf);
       }
+      requestAnimationFrame(raf);
     </script>
 
     <!-- Loading screen -->
@@ -97,9 +95,8 @@ const ogImage = `${siteUrl}/og-image.png`;
       const counter = document.getElementById('loader-counter');
       let count = 0;
 
-      const isMobileLoader = window.innerWidth < 768;
       const interval = setInterval(() => {
-        count += Math.floor(Math.random() * (isMobileLoader ? 20 : 12)) + 3;
+        count += Math.floor(Math.random() * 8) + 2;
         if (count >= 100) {
           count = 100;
           clearInterval(interval);
@@ -152,13 +149,9 @@ const ogImage = `${siteUrl}/og-image.png`;
             }
           });
         },
-        { threshold: 0.02, rootMargin: '0px 0px 50px 0px' }
+        { threshold: 0.1 }
       );
-
-      // Delay observer setup so loader doesn't interfere
-      setTimeout(() => {
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-      }, 500);
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     </script>
 
     <!-- Magnetic buttons -->
