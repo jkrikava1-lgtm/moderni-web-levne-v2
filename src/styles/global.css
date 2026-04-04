@@ -166,6 +166,16 @@ body.cursor-hover .cursor-ring {
     transition: none !important;
     transition-delay: 0s !important;
   }
+  .split-text .word-inner {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  #hero {
+    min-height: auto !important;
+    padding-top: 6rem !important;
+  }
 }
 
 /* ===== MAGNETIC BUTTON ===== */
