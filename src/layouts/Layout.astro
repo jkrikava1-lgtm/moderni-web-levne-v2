@@ -73,20 +73,22 @@ const ogImage = `${siteUrl}/og-image.png`;
 
     <slot />
 
-    <!-- Lenis smooth scroll -->
+    <!-- Lenis smooth scroll — desktop only -->
     <script>
       import Lenis from 'lenis';
 
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
+      if (window.matchMedia('(pointer: fine)').matches) {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
 
-      function raf(time: number) {
-        lenis.raf(time);
+        function raf(time: number) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
         requestAnimationFrame(raf);
       }
-      requestAnimationFrame(raf);
     </script>
 
     <!-- Loading screen -->
