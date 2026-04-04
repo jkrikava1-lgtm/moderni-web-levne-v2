@@ -152,9 +152,13 @@ const ogImage = `${siteUrl}/og-image.png`;
             }
           });
         },
-        { threshold: 0.15 }
+        { threshold: 0.02, rootMargin: '0px 0px 50px 0px' }
       );
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      // Delay observer setup so loader doesn't interfere
+      setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+      }, 500);
     </script>
 
     <!-- Magnetic buttons -->

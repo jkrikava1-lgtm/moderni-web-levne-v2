@@ -17,8 +17,8 @@
       </div>
     </div>
 
-    <!-- Hero headline -->
-    <h1 class="text-[clamp(2.2rem,8vw,8rem)] font-bold leading-[0.95] tracking-tight">
+    <!-- Hero headline — word reveal -->
+    <h1 class="hero-h1 text-[clamp(2.2rem,8vw,8rem)] font-bold leading-[0.95] tracking-tight" id="hero-h1">
       Váš web je vaše<br/>
       <span class="text-accent">vizitka</span>
     </h1>
@@ -98,10 +98,28 @@
   }
 </script>
 
-<!-- Hero fade-in after loader -->
+<!-- Hero animations after loader -->
 <script>
+  // Word-by-word reveal for H1
+  const h1 = document.getElementById('hero-h1');
+  if (h1) {
+    const html = h1.innerHTML;
+    const lines = html.split(/<br\s*\/?>/i);
+    let wordIndex = 0;
+    const processed = lines.map((line) => {
+      return line.replace(/(<[^>]+>)|(\S+)/g, (match, tag, word) => {
+        if (tag) return tag;
+        wordIndex++;
+        return `<span class="word"><span class="word-inner" style="transition-delay: ${wordIndex * 0.15}s">${word}</span></span>`;
+      });
+    });
+    h1.innerHTML = processed.join('<br/>');
+  }
+
+  // Trigger after loader
   setTimeout(() => {
     const content = document.querySelector('.hero-content');
     if (content) content.classList.add('visible');
+    if (h1) h1.classList.add('revealed');
   }, 1500);
 </script>

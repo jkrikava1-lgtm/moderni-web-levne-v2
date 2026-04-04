@@ -129,6 +129,24 @@ body.cursor-hover .cursor-ring {
   transform: translateY(0);
 }
 
+/* ===== H1 WORD REVEAL ===== */
+.hero-h1 .word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.05em;
+}
+
+.hero-h1 .word-inner {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-h1.revealed .word-inner {
+  transform: translateY(0);
+}
+
 /* ===== REVEAL ON SCROLL ===== */
 .reveal {
   opacity: 0;
