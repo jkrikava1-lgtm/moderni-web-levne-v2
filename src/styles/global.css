@@ -154,18 +154,8 @@ body.cursor-hover .cursor-ring {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
-/* Tablet + mobile: disable split-text animation */
+/* Tablet + mobile: disable ALL animations */
 @media (max-width: 1023px) {
-  .split-text .word-inner {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
-  }
-}
-
-/* Mobile: disable all animations, fix layout */
-@media (max-width: 767px) {
   .reveal, .reveal-delay-1, .reveal-delay-2, .reveal-delay-3 {
     opacity: 1 !important;
     transform: none !important;
@@ -175,7 +165,6 @@ body.cursor-hover .cursor-ring {
   .split-text .word-inner {
     opacity: 1 !important;
     transform: none !important;
-    filter: none !important;
     transition: none !important;
   }
   #hero {
@@ -233,9 +222,16 @@ body.cursor-hover .cursor-ring {
   width: 0px;
 }
 
-/* ===== MEDIA: disable custom cursor on touch ===== */
+/* ===== TOUCH DEVICES: disable everything heavy ===== */
 @media (pointer: coarse) {
   body { cursor: auto; }
   a, button, [role="button"] { cursor: auto; }
+  a::before, button::before, [role="button"]::before { display: none; }
   .cursor-dot, .cursor-ring { display: none; }
+  .loader { display: none; }
+  .marquee-track { animation: none; }
+  .logo-cursor { animation: none; }
+  .magnetic-btn { transition: none; }
+  .horizontal-scroll-track { will-change: auto; }
+  ::-webkit-scrollbar { width: auto; }
 }
