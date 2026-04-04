@@ -95,18 +95,24 @@ const ogImage = `${siteUrl}/og-image.png`;
     <script>
       const loader = document.getElementById('loader');
       const counter = document.getElementById('loader-counter');
-      let count = 0;
+      const isMobile = !window.matchMedia('(pointer: fine)').matches;
 
-      const interval = setInterval(() => {
-        count += Math.floor(Math.random() * 8) + 2;
-        if (count >= 100) {
-          count = 100;
-          clearInterval(interval);
-          if (counter) counter.innerHTML = `100<span>%</span>`;
-          setTimeout(() => loader?.classList.add('hidden'), 400);
+      // Skip loader on mobile entirely
+      if (isMobile) {
+        loader?.classList.add('hidden');
+      } else {
+        let count = 0;
+        const interval = setInterval(() => {
+          count += Math.floor(Math.random() * 8) + 2;
+          if (count >= 100) {
+            count = 100;
+            clearInterval(interval);
+            if (counter) counter.innerHTML = `100<span>%</span>`;
+            setTimeout(() => loader?.classList.add('hidden'), 400);
         }
-        if (counter) counter.innerHTML = `${count}<span>%</span>`;
-      }, 40);
+          if (counter) counter.innerHTML = `${count}<span>%</span>`;
+        }, 40);
+      }
     </script>
 
     <!-- Custom cursor -->
