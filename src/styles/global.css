@@ -159,13 +159,27 @@ body.cursor-hover .cursor-ring {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
-/* Tablet + smaller desktop: fix hero gap */
-@media (max-width: 1400px) {
+/* Tablet: fix hero + disable split-text */
+@media (max-width: 1023px) {
+  #hero {
+    min-height: auto !important;
+    padding-top: 6rem !important;
+  }
+  .split-text .word-inner {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+/* Small desktop / laptop */
+@media (min-width: 1024px) and (max-width: 1400px) {
   #hero {
     min-height: auto !important;
     padding-top: 8rem !important;
   }
 }
+/* Large desktop */
 @media (min-width: 1401px) {
   #hero {
     min-height: 80vh !important;
