@@ -61,7 +61,7 @@
       return parts.map((part) => {
         if (part.match(/^</) || part.match(/^\s*$/)) return part;
         wordIndex++;
-        const delay = wordIndex * 0.12;
+        const delay = wordIndex * 0.18;
         return `<span class="word"><span class="word-inner" style="transition-delay: ${delay}s">${part}</span></span>`;
       }).join('');
     });

@@ -132,9 +132,9 @@ body.cursor-hover .cursor-ring {
   transform: translateY(60px) rotateX(-90deg) scale(0.8);
   transform-origin: center bottom;
   filter: blur(10px);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .split-text.revealed .word-inner {
