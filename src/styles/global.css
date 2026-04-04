@@ -159,10 +159,16 @@ body.cursor-hover .cursor-ring {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
-/* Tablet: fix hero gap */
-@media (max-width: 1024px) {
+/* Tablet + smaller desktop: fix hero gap */
+@media (max-width: 1400px) {
   #hero {
-    min-height: 70vh !important;
+    min-height: auto !important;
+    padding-top: 8rem !important;
+  }
+}
+@media (min-width: 1401px) {
+  #hero {
+    min-height: 80vh !important;
   }
 }
 
