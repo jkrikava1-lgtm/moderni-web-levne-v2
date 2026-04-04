@@ -189,6 +189,20 @@ body.cursor-hover .cursor-ring {
   animation: marquee 20s linear infinite;
 }
 
+/* ===== LOGO CURSOR CLICK ANIMATION ===== */
+@keyframes cursor-click {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(0.85) rotate(-8deg); }
+  55% { transform: scale(1.05) rotate(2deg); }
+  70% { transform: scale(0.95) rotate(-1deg); }
+  85% { transform: scale(1); }
+}
+
+.logo-cursor {
+  animation: cursor-click 2.5s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 0px;
