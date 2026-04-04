@@ -99,7 +99,7 @@ const ogImage = `${siteUrl}/og-image.png`;
 
       const isMobileLoader = window.innerWidth < 768;
       const interval = setInterval(() => {
-        count += Math.floor(Math.random() * (isMobileLoader ? 15 : 8)) + 2;
+        count += Math.floor(Math.random() * (isMobileLoader ? 20 : 12)) + 3;
         if (count >= 100) {
           count = 100;
           clearInterval(interval);

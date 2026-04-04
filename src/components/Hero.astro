@@ -9,28 +9,28 @@
   <canvas id="particles-canvas" class="hidden md:block"></canvas>
 
   <!-- Main content -->
-  <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8 w-full">
+  <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8 w-full hero-content">
     <!-- Small label -->
-    <div class="mb-6 md:mb-8 overflow-hidden">
-      <div class="hero-reveal text-text-secondary text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase">
+    <div class="mb-6 md:mb-8">
+      <div class="text-text-secondary text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase">
         Webové stránky pro firmy a živnostníky
       </div>
     </div>
 
-    <!-- Hero headline — split text -->
-    <h1 class="split-text text-[clamp(2.2rem,8vw,8rem)] font-bold leading-[0.95] tracking-tight" id="hero-text">
+    <!-- Hero headline -->
+    <h1 class="text-[clamp(2.2rem,8vw,8rem)] font-bold leading-[0.95] tracking-tight">
       Váš web je vaše<br/>
       <span class="text-accent">vizitka</span>
     </h1>
 
     <!-- Bottom bar -->
     <div class="mt-10 md:mt-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-8 border-t border-dark-border pt-6 md:pt-8">
-      <p class="text-text-secondary text-base md:text-xl max-w-md leading-relaxed hero-reveal">
+      <p class="text-text-secondary text-base md:text-xl max-w-md leading-relaxed">
         Profesionální web nemusí stát desítky tisíc.
         Vytvořím vám stránky, které udělají dojem — za férovou cenu.
       </p>
 
-      <div class="flex items-center gap-6 hero-reveal hero-delay-1">
+      <div class="flex items-center gap-6">
         <a
           href="#kontakt"
           class="magnetic-btn group flex items-center gap-3 text-white"
@@ -53,94 +53,55 @@
 
 <!-- Particles — desktop only -->
 <script>
-  const isMobile = window.innerWidth < 768;
-  const canvas = document.getElementById('particles-canvas') as HTMLCanvasElement;
+  if (window.innerWidth >= 768) {
+    const canvas = document.getElementById('particles-canvas') as HTMLCanvasElement;
+    if (canvas) {
+      const ctx = canvas.getContext('2d')!;
+      let particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number; color: string }[] = [];
+      const colors = ['59, 130, 246', '139, 92, 246', '245, 158, 11'];
 
-  if (canvas && !isMobile) {
-    const ctx = canvas.getContext('2d')!;
-
-    interface Particle {
-      x: number; y: number; vx: number; vy: number;
-      size: number; opacity: number; color: string;
-    }
-
-    let particles: Particle[] = [];
-    const colors = ['59, 130, 246', '139, 92, 246', '245, 158, 11'];
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    function createParticles() {
-      const count = Math.floor((canvas.width * canvas.height) / 20000);
-      particles = [];
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.2,
-          vy: (Math.random() - 0.5) * 0.2,
-          size: Math.random() * 1.8 + 0.3,
-          opacity: Math.random() * 0.35 + 0.08,
-          color: colors[Math.floor(Math.random() * colors.length)],
-        });
-      }
-    }
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, i) => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color}, ${p.opacity})`;
-        ctx.fill();
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = p.x - particles[j].x;
-          const dy = p.y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 130) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(${p.color}, ${0.05 * (1 - dist / 130)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
+      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+      function createParticles() {
+        const count = Math.floor((canvas.width * canvas.height) / 25000);
+        particles = [];
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.15, vy: (Math.random() - 0.5) * 0.15,
+            size: Math.random() * 1.5 + 0.3, opacity: Math.random() * 0.3 + 0.05,
+            color: colors[Math.floor(Math.random() * colors.length)],
+          });
         }
-      });
-      requestAnimationFrame(drawParticles);
+      }
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, i) => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color}, ${p.opacity})`; ctx.fill();
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = p.x - particles[j].x, dy = p.y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 130) {
+              ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(${p.color}, ${0.04 * (1 - dist / 130)})`; ctx.lineWidth = 0.5; ctx.stroke();
+            }
+          }
+        });
+        requestAnimationFrame(draw);
+      }
+      resize(); createParticles(); draw();
+      window.addEventListener('resize', () => { resize(); createParticles(); });
     }
-
-    resize(); createParticles(); drawParticles();
-    window.addEventListener('resize', () => { resize(); createParticles(); });
   }
 </script>
 
-<!-- Hero text animation -->
+<!-- Hero fade-in after loader -->
 <script>
-  const heroText = document.getElementById('hero-text');
-  if (heroText) {
-    const lines = heroText.innerHTML.split(/<br\s*\/?>/i);
-    let wordIndex = 0;
-    const processedLines = lines.map((line) => {
-      const parts = line.split(/(\s+|<[^>]+>)/);
-      return parts.map((part) => {
-        if (part.match(/^</) || part.match(/^\s*$/)) return part;
-        wordIndex++;
-        const delay = wordIndex * 0.18;
-        return `<span class="word"><span class="word-inner" style="transition-delay: ${delay}s">${part}</span></span>`;
-      }).join('');
-    });
-    heroText.innerHTML = processedLines.join('<br/>');
-    setTimeout(() => {
-      heroText.classList.add('revealed');
-      document.querySelectorAll('.hero-reveal').forEach(el => el.classList.add('visible'));
-    }, 1600);
-  }
+  setTimeout(() => {
+    const content = document.querySelector('.hero-content');
+    if (content) content.classList.add('visible');
+  }, 1500);
 </script>

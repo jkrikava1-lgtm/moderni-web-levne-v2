@@ -5,7 +5,7 @@ const projects = [
     category: 'Firemní web',
     year: '2025',
     url: 'https://uspornevytapeni.cz',
-    image: '/portfolio/uspornevytapeni.png',
+    image: '/portfolio/uspornevytapeni.jpg',
     description: 'Web pro specialistu na tepelná čerpadla a úspory energií.',
   },
   {
@@ -13,7 +13,7 @@ const projects = [
     category: 'Firemní prezentace',
     year: '2025',
     url: 'https://unionpower.cz',
-    image: '/portfolio/unionpower.png',
+    image: '/portfolio/unionpower.jpg',
     description: 'Prezentace lisovny plastů s moderním designem.',
   },
   {
@@ -21,7 +21,7 @@ const projects = [
     category: 'Osobní web',
     year: '2025',
     url: 'https://2brothers.cz',
-    image: '/portfolio/2brothers.png',
+    image: '/portfolio/2brothers.jpg',
     description: 'Web pro DJ duo s tmavým, energickým vizuálem.',
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     category: 'Firemní web',
     year: '2025',
     url: '#',
-    image: '/portfolio/batmetal.png',
+    image: '/portfolio/batmetal.jpg',
     description: 'Průmyslové přípravky pro automobilový průmysl. Připravuje se.',
   },
   {
@@ -37,7 +37,7 @@ const projects = [
     category: 'Restaurace',
     year: '2025',
     url: '#',
-    image: '/portfolio/zajickuv-vinny-bar.png',
+    image: '/portfolio/zajickuv-vinny-bar.jpg',
     description: 'Vinný bar s tapas v Jičíně. Připravuje se.',
   },
 ];
@@ -81,6 +81,7 @@ const projects = [
             <img
               src={project.image}
               alt={project.title}
+              loading="lazy"
               class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-[1.2s] ease-out group-hover:scale-[1.05]"
             />
             <!-- Hover overlay -->
