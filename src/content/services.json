@@ -1,30 +1,46 @@
 {
   "heading": "Co pro vás udělám",
-  "subtext": "Hezký web není jen pro velké firmy. I řemeslník nebo malá firma si zaslouží stránky, které vypadají profesionálně.",
+  "subtext": "Hezký web není jen pro velké firmy. I řemeslník, živnostník nebo malá firma si zaslouží stránky, které vypadají profesionálně.",
   "items": [
     {
       "num": "01",
       "title": "Web na míru",
       "description": "Profesionální webová vizitka pro vaši firmu nebo živnost. Čistý design, který budí důvěru a ukazuje, že to myslíte vážně.",
-      "tags": ["Firemní web", "Vizitka", "Na míru"]
+      "tags": [
+        "Firemní web",
+        "Vizitka",
+        "Na míru"
+      ]
     },
     {
       "num": "02",
       "title": "Redesign webu",
       "description": "Máte web, který vypadá zastarale? Proměním ho v moderní stránky, za které se nebudete stydět — a zákazníci vám budou víc věřit.",
-      "tags": ["Modernizace", "Nový vzhled", "Lepší dojem"]
+      "tags": [
+        "Modernizace",
+        "Nový vzhled",
+        "Lepší dojem"
+      ]
     },
     {
       "num": "03",
       "title": "Správa & údržba",
       "description": "O web se postarám i po spuštění. Aktualizace obsahu, drobné úpravy, technická podpora — vy se soustřeďte na svou práci.",
-      "tags": ["Obsah", "Úpravy", "Podpora"]
+      "tags": [
+        "Obsah",
+        "Úpravy",
+        "Podpora"
+      ]
     },
     {
       "num": "04",
       "title": "Viditelnost na Googlu",
       "description": "Správná struktura a optimalizace, aby vás zákazníci z okolí snadno našli, když hledají vaše služby.",
-      "tags": ["SEO", "Lokální vyhledávání", "Google"]
+      "tags": [
+        "SEO",
+        "Lokální vyhledávání",
+        "Google"
+      ]
     }
   ]
 }
