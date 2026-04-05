@@ -201,21 +201,18 @@ body.cursor-hover .cursor-ring {
     100% { transform: translate(10%, -10%) scale(1.1); }
   }
 
-  /* Green accent on section headings */
+  /* Green accent on section headings — strong gradient */
   #sluzby h2, #cena h2, #ukazky h2, #jaknato h2, #kontakt h2 {
-    background: linear-gradient(90deg, #ffffff 60%, #c8ff00 100%);
+    background: linear-gradient(90deg, #ffffff 30%, #c8ff00 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Accent left border on service items */
+  /* Service cards — permanent green left accent */
   .service-card {
-    border-left: 2px solid transparent;
-    transition: border-color 0.3s ease;
-  }
-  .service-card:active {
-    border-left-color: #c8ff00;
+    border-left: 3px solid #c8ff00 !important;
+    padding-left: 1rem;
   }
 
   /* Green dot separators between sections */
@@ -227,6 +224,11 @@ body.cursor-hover .cursor-ring {
     background: #c8ff00;
     border-radius: 50%;
     margin: 0 auto 2rem;
+  }
+
+  /* Green accent numbers in process steps */
+  #jaknato .text-accent {
+    text-shadow: 0 0 15px rgba(200, 255, 0, 0.3);
   }
 
   /* Pulsing CTA button */
