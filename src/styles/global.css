@@ -115,6 +115,12 @@ body.cursor-hover .cursor-ring {
   color: var(--color-accent);
 }
 
+/* ===== TYPING CURSOR BLINK ===== */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* ===== TEXT REVEAL ===== */
 .split-text {
   perspective: 600px;
