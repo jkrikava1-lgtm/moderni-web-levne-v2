@@ -128,14 +128,15 @@ body.cursor-hover .cursor-ring {
 .split-text .word-inner {
   display: inline-block;
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(60px) rotateX(-80deg) scale(0.9);
+  transform-origin: center bottom;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .split-text.revealed .word-inner {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) rotateX(0deg) scale(1);
 }
 
 /* ===== REVEAL ON SCROLL ===== */
