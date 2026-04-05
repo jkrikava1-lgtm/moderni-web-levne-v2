@@ -1,0 +1,21 @@
+{
+  "heading": "Kvalitní web",
+  "heading_accent": "za férovou cenu",
+  "subtext": "Agentury účtují statisíce. Freelanceři na šablonách nemají kvalitu. Já spojuji obojí — moderní design a čistý kód za cenu, která dává smysl.",
+  "price": "od 9 900 Kč",
+  "price_note": "za kompletní web",
+  "reasons": [
+    {
+      "title": "Žádné skryté poplatky",
+      "description": "Cenu znáte předem. Žádné příplatky za každou úpravu nebo telefonát."
+    },
+    {
+      "title": "Bez měsíčních paušálů",
+      "description": "Zaplatíte jednorázově za hotový web. Žádný pronájem, žádné předplatné."
+    },
+    {
+      "title": "Moderní technologie = nižší cena",
+      "description": "Díky efektivním nástrojům dokážu dodat kvalitní web rychleji a levněji než klasické agentury."
+    }
+  ]
+}

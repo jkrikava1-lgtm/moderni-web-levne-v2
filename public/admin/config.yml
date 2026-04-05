@@ -1,0 +1,120 @@
+backend:
+  name: github
+  repo: jkrikava1-lgtm/moderni-web-levne-v2
+  branch: main
+
+media_folder: "public/portfolio"
+public_folder: "/portfolio"
+
+collections:
+  - name: "hero"
+    label: "Hero sekce"
+    files:
+      - name: "hero"
+        label: "Hero"
+        file: "src/content/hero.json"
+        fields:
+          - { name: "label", label: "Popisek nad nadpisem", widget: "string" }
+          - { name: "headline_line1", label: "Nadpis - řádek 1", widget: "string" }
+          - { name: "headline_line2", label: "Nadpis - řádek 2 (zelený)", widget: "string" }
+          - { name: "subtext", label: "Podtext", widget: "text" }
+          - { name: "cta_text", label: "Text tlačítka", widget: "string" }
+
+  - name: "services"
+    label: "Služby"
+    files:
+      - name: "services"
+        label: "Služby"
+        file: "src/content/services.json"
+        fields:
+          - { name: "heading", label: "Nadpis", widget: "string" }
+          - { name: "subtext", label: "Podtext", widget: "text" }
+          - name: "items"
+            label: "Služby"
+            widget: "list"
+            fields:
+              - { name: "num", label: "Číslo", widget: "string" }
+              - { name: "title", label: "Název", widget: "string" }
+              - { name: "description", label: "Popis", widget: "text" }
+              - { name: "tags", label: "Štítky", widget: "list", field: { name: "tag", label: "Štítek", widget: "string" } }
+
+  - name: "pricing"
+    label: "Cena"
+    files:
+      - name: "pricing"
+        label: "Ceník"
+        file: "src/content/pricing.json"
+        fields:
+          - { name: "heading", label: "Nadpis", widget: "string" }
+          - { name: "heading_accent", label: "Nadpis (zelený)", widget: "string" }
+          - { name: "subtext", label: "Podtext", widget: "text" }
+          - { name: "price", label: "Cena", widget: "string" }
+          - { name: "price_note", label: "Poznámka k ceně", widget: "string" }
+          - name: "reasons"
+            label: "Důvody"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Název", widget: "string" }
+              - { name: "description", label: "Popis", widget: "text" }
+
+  - name: "portfolio"
+    label: "Portfolio"
+    files:
+      - name: "portfolio"
+        label: "Ukázky prací"
+        file: "src/content/portfolio.json"
+        fields:
+          - { name: "heading", label: "Nadpis", widget: "string" }
+          - { name: "heading_accent", label: "Nadpis (zelený)", widget: "string" }
+          - { name: "subtext", label: "Podtext", widget: "text" }
+          - name: "projects"
+            label: "Projekty"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Název", widget: "string" }
+              - { name: "category", label: "Kategorie", widget: "string" }
+              - { name: "year", label: "Rok", widget: "string" }
+              - { name: "url", label: "URL", widget: "string" }
+              - { name: "image", label: "Obrázek", widget: "image" }
+              - { name: "description", label: "Popis", widget: "text" }
+
+  - name: "process"
+    label: "Jak na to"
+    files:
+      - name: "process"
+        label: "Proces"
+        file: "src/content/process.json"
+        fields:
+          - { name: "heading", label: "Nadpis", widget: "string" }
+          - { name: "heading_accent", label: "Nadpis (zelený)", widget: "string" }
+          - name: "steps"
+            label: "Kroky"
+            widget: "list"
+            fields:
+              - { name: "num", label: "Číslo", widget: "string" }
+              - { name: "title", label: "Název", widget: "string" }
+              - { name: "description", label: "Popis", widget: "text" }
+
+  - name: "contact"
+    label: "Kontakt"
+    files:
+      - name: "contact"
+        label: "Kontaktní údaje"
+        file: "src/content/contact.json"
+        fields:
+          - { name: "heading_line1", label: "Nadpis - řádek 1", widget: "string" }
+          - { name: "heading_accent", label: "Nadpis (zelený)", widget: "string" }
+          - { name: "email", label: "Email", widget: "string" }
+          - { name: "phone", label: "Telefon (zobrazení)", widget: "string" }
+          - { name: "phone_link", label: "Telefon (odkaz)", widget: "string" }
+          - { name: "response_time", label: "Doba odezvy", widget: "string" }
+          - { name: "availability", label: "Dostupnost", widget: "string" }
+
+  - name: "marquee"
+    label: "Marquee ticker"
+    files:
+      - name: "marquee"
+        label: "Běžící text"
+        file: "src/content/marquee.json"
+        fields:
+          - { name: "items", label: "Položky", widget: "list", field: { name: "item", label: "Text", widget: "string" } }

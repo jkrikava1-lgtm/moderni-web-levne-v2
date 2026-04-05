@@ -1,4 +1,5 @@
 ---
+import data from '../content/contact.json';
 ---
 
 <section id="kontakt" class="py-24 md:py-32">
@@ -7,49 +8,31 @@
       <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-4">Kontakt</div>
     </div>
 
-    <!-- Big CTA text -->
     <div class="reveal mb-14">
       <h2 class="text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1]">
-        Chcete web, za který<br/>
-        <span class="text-accent">se nebudete stydět?</span>
+        {data.heading_line1}<br/>
+        <span class="text-accent">{data.heading_accent}</span>
       </h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-16 md:gap-24">
-      <!-- Left: form -->
       <div class="reveal">
         <form class="space-y-6" id="contact-form">
           <div>
-            <input
-              type="text"
-              name="name"
-              required
-              placeholder="Jméno"
-              class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500"
-            />
+            <input type="text" name="name" required placeholder="Jméno"
+              class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500" />
           </div>
           <div>
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Email"
-              class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500"
-            />
+            <input type="email" name="email" required placeholder="Email"
+              class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500" />
           </div>
           <div>
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Telefon"
-              class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500"
-            />
+            <input type="tel" name="phone" placeholder="Telefon"
+              class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500" />
           </div>
           <div>
-            <select
-              name="project-type"
-              class="w-full bg-transparent border-b border-dark-border py-4 text-text-muted focus:outline-none focus:border-accent transition-colors duration-500"
-            >
+            <select name="project-type"
+              class="w-full bg-transparent border-b border-dark-border py-4 text-text-muted focus:outline-none focus:border-accent transition-colors duration-500">
               <option value="" class="bg-dark">Typ projektu</option>
               <option value="new" class="bg-dark">Nový web</option>
               <option value="redesign" class="bg-dark">Redesign</option>
@@ -57,20 +40,10 @@
             </select>
           </div>
           <div>
-            <textarea
-              name="message"
-              rows="3"
-              required
-              placeholder="Popište svůj projekt..."
-              class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500 resize-none"
-            ></textarea>
+            <textarea name="message" rows="3" required placeholder="Popište svůj projekt..."
+              class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500 resize-none"></textarea>
           </div>
-
-          <button
-            type="submit"
-            class="magnetic-btn group mt-4 flex items-center gap-4"
-            data-hover
-          >
+          <button type="submit" class="magnetic-btn group mt-4 flex items-center gap-4" data-hover>
             <span class="text-base tracking-wider uppercase text-white">Odeslat poptávku</span>
             <span class="w-14 h-14 rounded-full border border-accent/40 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
               <svg class="w-5 h-5 text-accent group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,31 +54,30 @@
         </form>
       </div>
 
-      <!-- Right: info -->
       <div class="reveal reveal-delay-1 flex flex-col justify-between">
         <div class="space-y-10">
           <div>
             <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-2">Email</div>
-            <a href="mailto:info@hezkewebovky.cz" class="text-lg text-white hover:text-accent transition-colors" data-hover>
-              info@hezkewebovky.cz
+            <a href={`mailto:${data.email}`} class="text-lg text-white hover:text-accent transition-colors" data-hover>
+              {data.email}
             </a>
           </div>
           <div>
             <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-2">Telefon</div>
-            <a href="tel:+420777724573" class="text-lg text-white hover:text-accent transition-colors" data-hover>
-              +420 777 724 573
+            <a href={`tel:${data.phone_link}`} class="text-lg text-white hover:text-accent transition-colors" data-hover>
+              {data.phone}
             </a>
           </div>
           <div>
             <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-2">Odezva</div>
-            <p class="text-lg text-white">Do 24 hodin</p>
+            <p class="text-lg text-white">{data.response_time}</p>
           </div>
         </div>
 
         <div class="mt-12 pt-8 border-t border-dark-border">
           <div class="flex items-center gap-3">
             <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-            <span class="text-text-secondary text-base">Aktuálně přijímáme nové projekty</span>
+            <span class="text-text-secondary text-base">{data.availability}</span>
           </div>
         </div>
       </div>

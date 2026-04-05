@@ -1,30 +1,6 @@
 ---
-const services = [
-  {
-    num: '01',
-    title: 'Web na míru',
-    description: 'Profesionální webová vizitka pro vaši firmu nebo živnost. Čistý design, který budí důvěru a ukazuje, že to myslíte vážně.',
-    tags: ['Firemní web', 'Vizitka', 'Na míru'],
-  },
-  {
-    num: '02',
-    title: 'Redesign webu',
-    description: 'Máte web, který vypadá zastarale? Proměním ho v moderní stránky, za které se nebudete stydět — a zákazníci vám budou víc věřit.',
-    tags: ['Modernizace', 'Nový vzhled', 'Lepší dojem'],
-  },
-  {
-    num: '03',
-    title: 'Správa & údržba',
-    description: 'O web se postarám i po spuštění. Aktualizace obsahu, drobné úpravy, technická podpora — vy se soustřeďte na svou práci.',
-    tags: ['Obsah', 'Úpravy', 'Podpora'],
-  },
-  {
-    num: '04',
-    title: 'Viditelnost na Googlu',
-    description: 'Správná struktura a optimalizace, aby vás zákazníci z okolí snadno našli, když hledají vaše služby.',
-    tags: ['SEO', 'Lokální vyhledávání', 'Google'],
-  },
-];
+import data from '../content/services.json';
+const services = data.items;
 ---
 
 <section id="sluzby" class="pt-24 md:pt-32 pb-12 md:pb-16">
@@ -34,11 +10,11 @@ const services = [
       <div>
         <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-4">Služby</div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-          Co pro vás <span class="text-accent">udělám</span>
+          {data.heading}
         </h2>
       </div>
       <p class="text-text-secondary max-w-md text-lg leading-relaxed">
-        Hezký web není jen pro velké firmy. I řemeslník nebo malá firma si zaslouží stránky, které vypadají profesionálně.
+        {data.subtext}
       </p>
     </div>
 

@@ -1,0 +1,47 @@
+{
+  "heading": "Jak vypadají naše",
+  "heading_accent": "weby",
+  "subtext": "Podívejte se, jak vypadají weby, které jsem vytvořil pro firmy jako je ta vaše.",
+  "projects": [
+    {
+      "title": "Úsporné vytápění",
+      "category": "Firemní web",
+      "year": "2025",
+      "url": "https://uspornevytapeni.cz",
+      "image": "/portfolio/uspornevytapeni.jpg",
+      "description": "Web pro specialistu na tepelná čerpadla a úspory energií."
+    },
+    {
+      "title": "Union Power",
+      "category": "Firemní prezentace",
+      "year": "2025",
+      "url": "https://unionpower.cz",
+      "image": "/portfolio/unionpower.jpg",
+      "description": "Prezentace lisovny plastů s moderním designem."
+    },
+    {
+      "title": "2Brothers Music Factory",
+      "category": "Osobní web",
+      "year": "2025",
+      "url": "https://2brothers.cz",
+      "image": "/portfolio/2brothers.jpg",
+      "description": "Web pro DJ duo s tmavým, energickým vizuálem."
+    },
+    {
+      "title": "Batmetal",
+      "category": "Firemní web",
+      "year": "2025",
+      "url": "#",
+      "image": "/portfolio/batmetal.jpg",
+      "description": "Průmyslové přípravky pro automobilový průmysl. Připravuje se."
+    },
+    {
+      "title": "Zajíčkův vinný bar",
+      "category": "Restaurace",
+      "year": "2025",
+      "url": "#",
+      "image": "/portfolio/zajickuv-vinny-bar.jpg",
+      "description": "Vinný bar s tapas v Jičíně. Připravuje se."
+    }
+  ]
+}

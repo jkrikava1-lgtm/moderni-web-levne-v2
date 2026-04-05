@@ -1,26 +1,5 @@
 ---
-const steps = [
-  {
-    num: '01',
-    title: 'Zavoláme si',
-    desc: 'Probereme, co děláte, co od webu potřebujete a jaký máte rozpočet. Bez závazků.',
-  },
-  {
-    num: '02',
-    title: 'Návrh vzhledu',
-    desc: 'Připravím návrh, jak bude web vypadat. Ukážu vám ho a společně doladíme detaily.',
-  },
-  {
-    num: '03',
-    title: 'Tvorba webu',
-    desc: 'Web naprogramuji, naplním obsahem a připravím na spuštění. Vy se nemusíte o nic starat.',
-  },
-  {
-    num: '04',
-    title: 'Spuštění',
-    desc: 'Web nasadím, vše otestuji a ukážu vám, jak ho spravovat. Jsem tu pro vás i potom.',
-  },
-];
+import data from '../content/process.json';
 ---
 
 <section id="jaknato" class="py-24 md:py-32 bg-dark-soft">
@@ -29,17 +8,17 @@ const steps = [
       <div>
         <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-4">Jak na to</div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-          Jak to <span class="text-accent">funguje</span>
+          {data.heading} <span class="text-accent">{data.heading_accent}</span>
         </h2>
       </div>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-dark-border rounded-xl overflow-hidden">
-      {steps.map((step, i) => (
+      {data.steps.map((step, i) => (
         <div class={`reveal reveal-delay-${i} bg-dark-soft p-8 md:p-10 group`} data-hover>
           <div class="text-accent text-xs font-mono mb-8">{step.num}</div>
           <h3 class="text-xl font-semibold mb-4 group-hover:text-accent transition-colors duration-500">{step.title}</h3>
-          <p class="text-text-secondary text-base leading-relaxed">{step.desc}</p>
+          <p class="text-text-secondary text-base leading-relaxed">{step.description}</p>
         </div>
       ))}
     </div>

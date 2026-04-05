@@ -1,0 +1,26 @@
+{
+  "heading": "Jak to",
+  "heading_accent": "funguje",
+  "steps": [
+    {
+      "num": "01",
+      "title": "Zavoláme si",
+      "description": "Probereme, co děláte, co od webu potřebujete a jaký máte rozpočet. Bez závazků."
+    },
+    {
+      "num": "02",
+      "title": "Návrh vzhledu",
+      "description": "Připravím návrh, jak bude web vypadat. Ukážu vám ho a společně doladíme detaily."
+    },
+    {
+      "num": "03",
+      "title": "Tvorba webu",
+      "description": "Web naprogramuji, naplním obsahem a připravím na spuštění. Vy se nemusíte o nic starat."
+    },
+    {
+      "num": "04",
+      "title": "Spuštění",
+      "description": "Web nasadím, vše otestuji a ukážu vám, jak ho spravovat. Jsem tu pro vás i potom."
+    }
+  ]
+}

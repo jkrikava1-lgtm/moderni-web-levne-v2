@@ -1,46 +1,6 @@
 ---
-const projects = [
-  {
-    title: 'Úsporné vytápění',
-    category: 'Firemní web',
-    year: '2025',
-    url: 'https://uspornevytapeni.cz',
-    image: '/portfolio/uspornevytapeni.jpg',
-    description: 'Web pro specialistu na tepelná čerpadla a úspory energií.',
-  },
-  {
-    title: 'Union Power',
-    category: 'Firemní prezentace',
-    year: '2025',
-    url: 'https://unionpower.cz',
-    image: '/portfolio/unionpower.jpg',
-    description: 'Prezentace lisovny plastů s moderním designem.',
-  },
-  {
-    title: '2Brothers Music Factory',
-    category: 'Osobní web',
-    year: '2025',
-    url: 'https://2brothers.cz',
-    image: '/portfolio/2brothers.jpg',
-    description: 'Web pro DJ duo s tmavým, energickým vizuálem.',
-  },
-  {
-    title: 'Batmetal',
-    category: 'Firemní web',
-    year: '2025',
-    url: '#',
-    image: '/portfolio/batmetal.jpg',
-    description: 'Průmyslové přípravky pro automobilový průmysl. Připravuje se.',
-  },
-  {
-    title: 'Zajíčkův vinný bar',
-    category: 'Restaurace',
-    year: '2025',
-    url: '#',
-    image: '/portfolio/zajickuv-vinny-bar.jpg',
-    description: 'Vinný bar s tapas v Jičíně. Připravuje se.',
-  },
-];
+import data from '../content/portfolio.json';
+const projects = data.projects;
 ---
 
 <section id="ukazky" class="pt-12 md:pt-16 pb-24 md:pb-32 overflow-hidden">
@@ -49,11 +9,11 @@ const projects = [
       <div>
         <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-4">Ukázky</div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-          Jak vypadají naše <span class="text-accent">weby</span>
+          {data.heading} <span class="text-accent">{data.heading_accent}</span>
         </h2>
       </div>
       <p class="text-text-secondary max-w-md text-lg leading-relaxed">
-        Podívejte se, jak vypadají weby, které jsem vytvořil pro firmy jako je ta vaše.
+        {data.subtext}
       </p>
     </div>
   </div>
