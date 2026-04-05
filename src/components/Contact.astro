@@ -43,8 +43,10 @@ import data from '../content/contact.json';
             <textarea name="message" rows="3" required placeholder="Popište svůj projekt..."
               class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500 resize-none"></textarea>
           </div>
-          <button type="submit" class="magnetic-btn group mt-4 flex items-center gap-4" data-hover>
-            <span class="text-base tracking-wider uppercase text-white">Odeslat poptávku</span>
+          <div id="form-status" class="hidden py-3 text-center rounded-lg"></div>
+
+          <button type="submit" id="submit-btn" class="magnetic-btn group mt-4 flex items-center gap-4" data-hover>
+            <span class="text-base tracking-wider uppercase text-white" id="submit-text">Odeslat poptávku</span>
             <span class="w-14 h-14 rounded-full border border-accent/40 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
               <svg class="w-5 h-5 text-accent group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
@@ -52,6 +54,50 @@ import data from '../content/contact.json';
             </span>
           </button>
         </form>
+
+        <script>
+          const form = document.getElementById('contact-form') as HTMLFormElement;
+          const status = document.getElementById('form-status')!;
+          const submitText = document.getElementById('submit-text')!;
+
+          form?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitText.textContent = 'Odesílám...';
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            try {
+              const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  access_key: 'd208c7fb-2ac7-426d-bd06-1fdb9c4801e2',
+                  subject: `Nová poptávka z hezkewebovky.cz: ${data.name}`,
+                  from_name: 'Hezké webovky',
+                  name: data.name,
+                  email: data.email,
+                  phone: data.phone || 'Neuvedeno',
+                  'Typ projektu': data['project-type'] || 'Neuvedeno',
+                  message: data.message,
+                }),
+              });
+
+              if (res.ok) {
+                status.textContent = 'Děkujeme! Ozveme se vám do 24 hodin.';
+                status.className = 'py-3 text-center rounded-lg bg-accent/10 text-accent';
+                form.reset();
+              } else {
+                throw new Error();
+              }
+            } catch {
+              status.textContent = 'Něco se pokazilo. Zkuste to znovu nebo nám napište na email.';
+              status.className = 'py-3 text-center rounded-lg bg-red-500/10 text-red-400';
+            }
+
+            submitText.textContent = 'Odeslat poptávku';
+          });
+        </script>
       </div>
 
       <div class="reveal reveal-delay-1 flex flex-col justify-between">
