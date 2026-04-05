@@ -201,6 +201,34 @@ body.cursor-hover .cursor-ring {
     100% { transform: translate(10%, -10%) scale(1.1); }
   }
 
+  /* Green accent on section headings */
+  #sluzby h2, #cena h2, #ukazky h2, #jaknato h2, #kontakt h2 {
+    background: linear-gradient(90deg, #ffffff 60%, #c8ff00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Accent left border on service items */
+  .service-card {
+    border-left: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .service-card:active {
+    border-left-color: #c8ff00;
+  }
+
+  /* Green dot separators between sections */
+  section + section::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #c8ff00;
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+  }
+
   /* Pulsing CTA button */
   .magnetic-btn {
     animation: mobile-pulse 2.5s ease-in-out infinite;
