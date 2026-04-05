@@ -78,10 +78,20 @@ const ogImage = `${siteUrl}/og-image.png`;
     <script>
       const isDesktop = window.matchMedia('(pointer: fine)').matches;
 
+      // === RANDOM GREEN WORD IN HEADINGS — mobile/tablet ===
+      if (!isDesktop) {
+        document.querySelectorAll('#sluzby h2, #cena h2, #ukazky h2, #jaknato h2, #kontakt h2').forEach((h2) => {
+          const words = h2.textContent?.trim().split(/\s+/) || [];
+          if (words.length > 1) {
+            const idx = Math.floor(Math.random() * words.length);
+            h2.innerHTML = words.map((w, i) => i === idx ? `<span class="accent-word">${w}</span>` : w).join(' ');
+          }
+        });
+      }
+
       // === LOADER ===
       const loader = document.getElementById('loader');
       if (!isDesktop) {
-        // Mobile: hide loader immediately
         loader?.classList.add('hidden');
       } else {
         // Desktop: animated counter

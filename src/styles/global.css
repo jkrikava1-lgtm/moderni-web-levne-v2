@@ -213,12 +213,9 @@ body.cursor-hover .cursor-ring {
     --color-text-muted: #8891a3 !important;
   }
 
-  /* Green accent on section headings — strong gradient */
-  #sluzby h2, #cena h2, #ukazky h2, #jaknato h2, #kontakt h2 {
-    background: linear-gradient(90deg, #ffffff 30%, #c8ff00 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Green accent word in headings — set by JS */
+  .accent-word {
+    color: #c8ff00;
   }
 
   /* Service cards — centered short green left accent */
