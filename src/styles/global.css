@@ -211,16 +211,6 @@ body.cursor-hover .cursor-ring {
     50% { box-shadow: 0 0 30px 8px rgba(200, 255, 0, 0.15); }
   }
 
-  /* Accent underline animation on H1 */
-  #hero h1 {
-    border-bottom: 2px solid transparent;
-    animation: mobile-underline 3s ease-out 0.5s forwards;
-  }
-
-  @keyframes mobile-underline {
-    0% { border-image: linear-gradient(90deg, #c8ff00 0%, transparent 0%) 1; }
-    100% { border-image: linear-gradient(90deg, #c8ff00 100%, transparent 100%) 1; }
-  }
 }
 
 /* ===== MAGNETIC BUTTON ===== */
