@@ -62,19 +62,26 @@ import hero from '../content/hero.json';
     const subtext = document.getElementById('hero-subtext');
     if (subtext) {
       const fullText = subtext.getAttribute('data-text') || '';
-      // Fix height first so layout doesn't jump
       const height = subtext.offsetHeight;
       subtext.style.minHeight = height + 'px';
+
+      // Create cursor element
+      const cursor = document.createElement('span');
+      cursor.style.cssText = 'display:inline-block;width:2px;background:#c8ff00;margin-left:1px;vertical-align:text-bottom;animation:blink 0.8s step-end infinite;';
+      cursor.style.height = window.getComputedStyle(subtext).lineHeight;
+
       subtext.textContent = '';
-      subtext.style.borderRight = '2px solid #c8ff00';
+      subtext.appendChild(cursor);
+
       let i = 0;
       setTimeout(() => {
         const typeInterval = setInterval(() => {
-          subtext.textContent += fullText[i];
+          // Insert character before cursor
+          cursor.before(fullText[i]);
           i++;
           if (i >= fullText.length) {
             clearInterval(typeInterval);
-            setTimeout(() => { subtext.style.borderRight = 'none'; }, 1000);
+            setTimeout(() => cursor.remove(), 1000);
           }
         }, 25);
       }, 2800);
