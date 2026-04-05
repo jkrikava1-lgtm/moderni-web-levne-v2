@@ -55,47 +55,50 @@ import data from '../content/contact.json';
           </button>
         </form>
 
-        <script>
-          const form = document.getElementById('contact-form') as HTMLFormElement;
-          const status = document.getElementById('form-status')!;
-          const submitText = document.getElementById('submit-text')!;
+        <script is:inline>
+          document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('contact-form');
+            var status = document.getElementById('form-status');
+            var submitText = document.getElementById('submit-text');
 
-          form?.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitText.textContent = 'Odesílám...';
+            if (form) {
+              form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitText.textContent = 'Odesílám...';
 
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+                var formData = new FormData(form);
+                var data = {};
+                formData.forEach(function(value, key) { data[key] = value; });
 
-            try {
-              const res = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  access_key: 'd208c7fb-2ac7-426d-bd06-1fdb9c4801e2',
-                  subject: `Nová poptávka z hezkewebovky.cz: ${data.name}`,
-                  from_name: 'Hezké webovky',
-                  name: data.name,
-                  email: data.email,
-                  phone: data.phone || 'Neuvedeno',
-                  'Typ projektu': data['project-type'] || 'Neuvedeno',
-                  message: data.message,
-                }),
+                fetch('https://api.web3forms.com/submit', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    access_key: 'd208c7fb-2ac7-426d-bd06-1fdb9c4801e2',
+                    subject: 'Nová poptávka z hezkewebovky.cz: ' + data.name,
+                    from_name: 'Hezké webovky',
+                    name: data.name,
+                    email: data.email,
+                    phone: data.phone || 'Neuvedeno',
+                    'Typ projektu': data['project-type'] || 'Neuvedeno',
+                    message: data.message
+                  })
+                }).then(function(res) {
+                  if (res.ok) {
+                    status.textContent = 'Děkujeme! Ozveme se vám do 24 hodin.';
+                    status.className = 'py-3 text-center rounded-lg bg-accent/10 text-accent';
+                    form.reset();
+                  } else {
+                    throw new Error();
+                  }
+                }).catch(function() {
+                  status.textContent = 'Něco se pokazilo. Zkuste to znovu nebo nám napište na email.';
+                  status.className = 'py-3 text-center rounded-lg bg-red-500/10 text-red-400';
+                }).finally(function() {
+                  submitText.textContent = 'Odeslat poptávku';
+                });
               });
-
-              if (res.ok) {
-                status.textContent = 'Děkujeme! Ozveme se vám do 24 hodin.';
-                status.className = 'py-3 text-center rounded-lg bg-accent/10 text-accent';
-                form.reset();
-              } else {
-                throw new Error();
-              }
-            } catch {
-              status.textContent = 'Něco se pokazilo. Zkuste to znovu nebo nám napište na email.';
-              status.className = 'py-3 text-center rounded-lg bg-red-500/10 text-red-400';
             }
-
-            submitText.textContent = 'Odeslat poptávku';
           });
         </script>
       </div>
