@@ -21,7 +21,7 @@ const services = data.items;
     <!-- Service items — staggered list (inspired by AKQA/Clay) -->
     <div class="space-y-0">
       {services.map((service) => (
-        <div class="reveal group border-t border-dark-border py-10 md:py-14" data-hover>
+        <div class="reveal group border-t last:border-b border-dark-border py-10 md:py-14" data-hover>
           <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-16">
             <div class="text-text-muted text-sm font-mono md:w-16 shrink-0">{service.num}</div>
             <div class="flex-1">
