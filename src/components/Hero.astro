@@ -10,10 +10,13 @@ import hero from '../content/hero.json';
       </div>
     </div>
 
-    <h1 class="split-text text-[clamp(2.5rem,8vw,8rem)] font-bold leading-[0.95] tracking-tight" id="hero-text">
-      {hero.headline_line1}<br/>
-      <span class="text-accent">{hero.headline_line2}</span>
-    </h1>
+    <div class="relative inline-block">
+      <h1 class="split-text text-[clamp(2.5rem,8vw,8rem)] font-bold leading-[0.95] tracking-tight" id="hero-text">
+        {hero.headline_line1}<br/>
+        <span class="text-accent">{hero.headline_line2}</span>
+      </h1>
+      <div class="h-[3px] bg-accent mt-4 origin-left scale-x-0 transition-transform duration-1000 ease-out" id="hero-line"></div>
+    </div>
 
     <div class="mt-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 border-t border-dark-border pt-8">
       <p class="text-text-secondary text-lg md:text-xl max-w-md leading-relaxed" id="hero-subtext" data-text={hero.subtext}>
@@ -51,7 +54,13 @@ import hero from '../content/hero.json';
       }).join('');
     });
     heroText.innerHTML = processedLines.join('<br/>');
-    setTimeout(() => heroText.classList.add('revealed'), 1500);
+    setTimeout(() => {
+      heroText.classList.add('revealed');
+      setTimeout(() => {
+        const line = document.getElementById('hero-line');
+        if (line) line.style.transform = 'scaleX(1)';
+      }, 800);
+    }, 1500);
   }
 
   // Typing effect on subtext — desktop only
