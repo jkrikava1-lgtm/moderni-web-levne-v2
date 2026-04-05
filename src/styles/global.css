@@ -235,3 +235,4 @@ body.cursor-hover .cursor-ring {
   .horizontal-scroll-track { will-change: auto; }
   ::-webkit-scrollbar { width: auto; }
 }
+body::after { content: ""; display: none; }
