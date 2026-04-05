@@ -188,8 +188,8 @@ body.cursor-hover .cursor-ring {
   }
 }
 
-/* Mobile: subtle animated gradient background */
-@media (max-width: 767px) {
+/* Mobile + tablet: visual accents and effects */
+@media (max-width: 1023px) {
   #hero::before {
     content: '';
     position: absolute;
