@@ -14,7 +14,7 @@ import data from '../content/pricing.json';
           {data.subtext}
         </p>
         <div class="mt-8 flex items-baseline gap-2">
-          <span class="text-4xl md:text-5xl font-bold text-accent">{data.price}</span>
+          <span class="text-4xl md:text-5xl font-bold text-accent" id="price-counter" data-target="9900">{data.price}</span>
           <span class="text-text-muted text-base">{data.price_note}</span>
         </div>
       </div>
@@ -30,3 +30,29 @@ import data from '../content/pricing.json';
     </div>
   </div>
 </section>
+
+<script>
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const counter = document.getElementById('price-counter');
+    if (counter) {
+      const target = parseInt(counter.getAttribute('data-target') || '0');
+      let counted = false;
+      const obs = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !counted) {
+          counted = true;
+          let current = 0;
+          const step = Math.ceil(target / 60);
+          const interval = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(interval);
+            }
+            counter.textContent = `od ${current.toLocaleString('cs-CZ')} Kč`;
+          }, 20);
+        }
+      }, { threshold: 0.5 });
+      obs.observe(counter);
+    }
+  }
+</script>

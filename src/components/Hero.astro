@@ -16,7 +16,7 @@ import hero from '../content/hero.json';
     </h1>
 
     <div class="mt-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 border-t border-dark-border pt-8">
-      <p class="text-text-secondary text-lg md:text-xl max-w-md leading-relaxed">
+      <p class="text-text-secondary text-lg md:text-xl max-w-md leading-relaxed" id="hero-subtext" data-text={hero.subtext}>
         {hero.subtext}
       </p>
 
@@ -52,5 +52,26 @@ import hero from '../content/hero.json';
     });
     heroText.innerHTML = processedLines.join('<br/>');
     setTimeout(() => heroText.classList.add('revealed'), 1500);
+  }
+
+  // Typing effect on subtext — desktop only
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const subtext = document.getElementById('hero-subtext');
+    if (subtext) {
+      const fullText = subtext.getAttribute('data-text') || '';
+      subtext.textContent = '';
+      subtext.style.borderRight = '2px solid #c8ff00';
+      let i = 0;
+      setTimeout(() => {
+        const typeInterval = setInterval(() => {
+          subtext.textContent += fullText[i];
+          i++;
+          if (i >= fullText.length) {
+            clearInterval(typeInterval);
+            setTimeout(() => { subtext.style.borderRight = 'none'; }, 1000);
+          }
+        }, 25);
+      }, 2800);
+    }
   }
 </script>

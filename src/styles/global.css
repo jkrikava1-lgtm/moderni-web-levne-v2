@@ -183,6 +183,17 @@ body.cursor-hover .cursor-ring {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ===== HOVER GLOW on service cards ===== */
+@media (pointer: fine) {
+  .service-card {
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .service-card:hover {
+    box-shadow: 0 0 30px rgba(200, 255, 0, 0.06), 0 0 60px rgba(200, 255, 0, 0.03);
+    border-color: rgba(200, 255, 0, 0.15);
+  }
+}
+
 /* ===== HORIZONTAL SCROLL ===== */
 .horizontal-scroll-section {
   overflow: hidden;

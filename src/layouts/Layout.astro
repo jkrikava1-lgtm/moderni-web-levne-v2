@@ -154,6 +154,19 @@ const ogImage = `${siteUrl}/og-image.png`;
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
       }
 
+      // === PARALLAX on section headings — desktop only ===
+      if (isDesktop) {
+        const parallaxHeadings = document.querySelectorAll('h2');
+        window.addEventListener('scroll', () => {
+          parallaxHeadings.forEach((h2) => {
+            const rect = h2.getBoundingClientRect();
+            const speed = 0.08;
+            const offset = (rect.top - window.innerHeight / 2) * speed;
+            (h2 as HTMLElement).style.transform = `translateY(${offset}px)`;
+          });
+        });
+      }
+
       // === MAGNETIC BUTTONS — desktop only ===
       if (isDesktop) {
         document.querySelectorAll('.magnetic-btn').forEach((btn) => {
