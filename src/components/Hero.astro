@@ -19,9 +19,8 @@ import hero from '../content/hero.json';
     </div>
 
     <div class="mt-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 border-t border-dark-border pt-8">
-      <p class="text-text-secondary text-lg md:text-xl max-w-md leading-relaxed relative overflow-hidden" id="hero-subtext">
-        <span id="hero-subtext-inner">{hero.subtext}</span>
-        <span class="hidden md:inline-block w-[2px] h-[1em] bg-accent ml-1 align-middle" id="hero-cursor"></span>
+      <p class="text-text-secondary text-lg md:text-xl max-w-md leading-relaxed" id="hero-subtext" data-text={hero.subtext}>
+        {hero.subtext}
       </p>
 
       <div class="flex items-center gap-6">
@@ -58,19 +57,26 @@ import hero from '../content/hero.json';
     setTimeout(() => heroText.classList.add('revealed'), 1500);
   }
 
-  // Reveal subtext with clip animation — desktop only
+  // Typing effect — desktop only
   if (window.matchMedia('(pointer: fine)').matches) {
     const subtext = document.getElementById('hero-subtext');
-    const cursor = document.getElementById('hero-cursor');
     if (subtext) {
-      subtext.style.clipPath = 'inset(0 100% 0 0)';
-      subtext.style.transition = 'clip-path 2s cubic-bezier(0.16, 1, 0.3, 1)';
-      if (cursor) cursor.style.animation = 'blink 0.8s step-end infinite';
+      const fullText = subtext.getAttribute('data-text') || '';
+      // Fix height first so layout doesn't jump
+      const height = subtext.offsetHeight;
+      subtext.style.minHeight = height + 'px';
+      subtext.textContent = '';
+      subtext.style.borderRight = '2px solid #c8ff00';
+      let i = 0;
       setTimeout(() => {
-        subtext.style.clipPath = 'inset(0 0% 0 0)';
-        setTimeout(() => {
-          if (cursor) cursor.style.display = 'none';
-        }, 3000);
+        const typeInterval = setInterval(() => {
+          subtext.textContent += fullText[i];
+          i++;
+          if (i >= fullText.length) {
+            clearInterval(typeInterval);
+            setTimeout(() => { subtext.style.borderRight = 'none'; }, 1000);
+          }
+        }, 25);
       }, 2800);
     }
   }
