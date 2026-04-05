@@ -201,6 +201,12 @@ body.cursor-hover .cursor-ring {
     100% { transform: translate(10%, -10%) scale(1.1); }
   }
 
+  /* Higher text contrast on mobile */
+  body {
+    --color-text-secondary: #b0b8c8 !important;
+    --color-text-muted: #8891a3 !important;
+  }
+
   /* Green accent on section headings — strong gradient */
   #sluzby h2, #cena h2, #ukazky h2, #jaknato h2, #kontakt h2 {
     background: linear-gradient(90deg, #ffffff 30%, #c8ff00 100%);
@@ -209,10 +215,19 @@ body.cursor-hover .cursor-ring {
     background-clip: text;
   }
 
-  /* Service cards — permanent green left accent */
+  /* Service cards — centered short green left accent */
   .service-card {
-    border-left: 3px solid #c8ff00 !important;
+    position: relative;
     padding-left: 1rem;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 2px;
+    background: #c8ff00;
   }
 
   /* Green dot separators between sections */
