@@ -132,29 +132,33 @@ body.cursor-hover .cursor-ring {
     pointer-events: none;
   }
   .glitch::before {
-    animation: glitch-1 8s infinite;
+    animation: glitch-1 4s infinite;
     color: #ff00c8;
     z-index: -1;
   }
   .glitch::after {
-    animation: glitch-2 8s infinite;
+    animation: glitch-2 4s infinite;
     color: #00fff9;
     z-index: -2;
   }
 
   @keyframes glitch-1 {
-    0%, 96%, 100% { transform: translate(0); opacity: 0; }
-    96.5% { transform: translate(-3px, 1px); opacity: 0.8; }
-    97% { transform: translate(2px, -1px); opacity: 0.8; }
-    97.5% { transform: translate(-2px, 0); opacity: 0.8; }
-    98% { transform: translate(0); opacity: 0; }
+    0%, 92%, 100% { transform: translate(0); opacity: 0; }
+    92.5% { transform: translate(-8px, 3px); opacity: 1; }
+    93% { transform: translate(6px, -3px); opacity: 1; }
+    94% { transform: translate(-6px, 2px); opacity: 1; }
+    95% { transform: translate(4px, -2px); opacity: 1; }
+    96% { transform: translate(-3px, 0); opacity: 1; }
+    97% { transform: translate(0); opacity: 0; }
   }
   @keyframes glitch-2 {
-    0%, 96%, 100% { transform: translate(0); opacity: 0; }
-    96.5% { transform: translate(3px, -1px); opacity: 0.8; }
-    97% { transform: translate(-2px, 1px); opacity: 0.8; }
-    97.5% { transform: translate(2px, 0); opacity: 0.8; }
-    98% { transform: translate(0); opacity: 0; }
+    0%, 92%, 100% { transform: translate(0); opacity: 0; }
+    92.5% { transform: translate(8px, -3px); opacity: 1; }
+    93% { transform: translate(-6px, 3px); opacity: 1; }
+    94% { transform: translate(6px, -2px); opacity: 1; }
+    95% { transform: translate(-4px, 2px); opacity: 1; }
+    96% { transform: translate(3px, 0); opacity: 1; }
+    97% { transform: translate(0); opacity: 0; }
   }
 }
 
