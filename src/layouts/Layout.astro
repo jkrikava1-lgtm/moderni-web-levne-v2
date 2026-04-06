@@ -14,11 +14,28 @@ const ogImage = `${siteUrl}/og-image.png`;
 <!doctype html>
 <html lang="cs">
   <head>
-    <!-- Google Analytics -->
+    <!-- Google Analytics with Consent Mode v2 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0RNN8D6XDS"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+
+      // Default: deny all until user consents
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+
+      // Apply saved consent if exists
+      var savedConsent = localStorage.getItem('cookie-consent');
+      if (savedConsent === 'accepted') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+
       gtag('js', new Date());
       gtag('config', 'G-0RNN8D6XDS');
     </script>
@@ -72,6 +89,45 @@ const ogImage = `${siteUrl}/og-image.png`;
     </script>
   </head>
   <body class="antialiased">
+    <!-- Cookie consent banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[9999] bg-dark-card border-t border-dark-border p-4 md:p-6 hidden">
+      <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <p class="text-text-secondary text-sm md:text-base max-w-2xl leading-relaxed">
+          Tento web používá cookies pro analýzu návštěvnosti (Google Analytics).
+          Můžete je přijmout nebo odmítnout.
+        </p>
+        <div class="flex gap-3 shrink-0">
+          <button id="cookie-reject" class="px-5 py-2.5 border border-dark-border text-text-secondary text-sm rounded-lg hover:text-white hover:border-text-secondary transition-all">
+            Odmítnout
+          </button>
+          <button id="cookie-accept" class="px-5 py-2.5 bg-accent text-black text-sm font-medium rounded-lg hover:bg-white transition-all">
+            Přijmout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function() {
+        var banner = document.getElementById('cookie-banner');
+        var saved = localStorage.getItem('cookie-consent');
+        if (!saved) {
+          banner.classList.remove('hidden');
+        }
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'accepted');
+          if (typeof gtag === 'function') {
+            gtag('consent', 'update', { 'analytics_storage': 'granted' });
+          }
+          banner.classList.add('hidden');
+        });
+        document.getElementById('cookie-reject').addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'rejected');
+          banner.classList.add('hidden');
+        });
+      })();
+    </script>
+
     <!-- Loading screen — desktop only via JS -->
     <div class="loader" id="loader">
       <div class="loader-counter" id="loader-counter">0<span>%</span></div>
