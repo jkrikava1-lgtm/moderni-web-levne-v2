@@ -59,6 +59,11 @@ import data from '../content/contact.json';
         </form>
 
         <script is:inline>
+          // Clean URL params on load (from any previous form submission)
+          if (window.location.search.includes('access_key') || window.location.search.includes('email=')) {
+            window.history.replaceState({}, '', window.location.pathname);
+          }
+
           document.addEventListener('DOMContentLoaded', function() {
             var form = document.getElementById('contact-form');
             var status = document.getElementById('form-status');
@@ -91,6 +96,10 @@ import data from '../content/contact.json';
                     status.textContent = 'Děkujeme! Ozveme se vám do 24 hodin.';
                     status.className = 'py-3 text-center rounded-lg bg-accent/10 text-accent';
                     form.reset();
+                    // Clean URL params from previous form submissions
+                    if (window.location.search || window.location.hash) {
+                      window.history.replaceState({}, '', window.location.pathname + '#kontakt');
+                    }
                   } else {
                     throw new Error();
                   }
