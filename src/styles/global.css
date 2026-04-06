@@ -160,6 +160,27 @@ body.cursor-hover .cursor-ring {
     96% { transform: translate(3px, 0); opacity: 1; }
     97% { transform: translate(0); opacity: 0; }
   }
+
+  /* Continuous glitch on hover */
+  h1:hover .glitch::before {
+    animation: glitch-hover-1 0.4s infinite;
+  }
+  h1:hover .glitch::after {
+    animation: glitch-hover-2 0.4s infinite;
+  }
+
+  @keyframes glitch-hover-1 {
+    0%, 100% { transform: translate(-6px, 2px); opacity: 1; }
+    25% { transform: translate(4px, -2px); opacity: 1; }
+    50% { transform: translate(-3px, 3px); opacity: 1; }
+    75% { transform: translate(5px, -1px); opacity: 1; }
+  }
+  @keyframes glitch-hover-2 {
+    0%, 100% { transform: translate(6px, -2px); opacity: 1; }
+    25% { transform: translate(-4px, 2px); opacity: 1; }
+    50% { transform: translate(3px, -3px); opacity: 1; }
+    75% { transform: translate(-5px, 1px); opacity: 1; }
+  }
 }
 
 /* ===== TYPING CURSOR BLINK ===== */
