@@ -106,6 +106,10 @@ import data from '../content/contact.json';
       <div class="reveal reveal-delay-1 flex flex-col justify-between">
         <div class="space-y-10">
           <div>
+            <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-2">Kontaktní osoba</div>
+            <p class="text-lg text-white">{data.contact_person}</p>
+          </div>
+          <div>
             <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-2">Email</div>
             <a href={`mailto:${data.email}`} class="text-lg text-white hover:text-accent transition-colors" data-hover>
               {data.email}

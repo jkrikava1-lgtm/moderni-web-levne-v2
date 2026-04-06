@@ -104,6 +104,7 @@ collections:
         fields:
           - { name: "heading_line1", label: "Nadpis - řádek 1", widget: "string" }
           - { name: "heading_accent", label: "Nadpis (zelený)", widget: "string" }
+          - { name: "contact_person", label: "Kontaktní osoba", widget: "string" }
           - { name: "email", label: "Email", widget: "string" }
           - { name: "phone", label: "Telefon (zobrazení)", widget: "string" }
           - { name: "phone_link", label: "Telefon (odkaz)", widget: "string" }
