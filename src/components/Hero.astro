@@ -12,8 +12,8 @@ import hero from '../content/hero.json';
 
     <div class="relative inline-block">
       <h1 class="split-text text-[clamp(2.5rem,8vw,8rem)] font-bold leading-[0.95] tracking-tight" id="hero-text">
-        {hero.headline_line1}<br/>
-        <span class="text-accent">{hero.headline_line2}</span>
+        <span class="glitch" data-text={hero.headline_line1}>{hero.headline_line1}</span><br/>
+        <span class="glitch text-accent" data-text={hero.headline_line2}>{hero.headline_line2}</span>
       </h1>
       <div class="h-[3px] bg-accent mt-4 md:hidden" id="hero-line"></div>
     </div>
