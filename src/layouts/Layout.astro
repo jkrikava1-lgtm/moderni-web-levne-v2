@@ -149,7 +149,9 @@ const ogImage = `${siteUrl}/og-image.png`;
       // === RANDOM GREEN WORD IN HEADINGS — mobile/tablet ===
       if (!isDesktop) {
         document.querySelectorAll('#sluzby h2, #cena h2, #ukazky h2, #jaknato h2, #kontakt h2').forEach((h2) => {
-          const words = h2.textContent?.trim().split(/\s+/) || [];
+          // Replace <br> with a space so words on separate lines don't get glued together
+          const text = h2.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '');
+          const words = text.trim().split(/\s+/);
           if (words.length > 1) {
             const idx = Math.floor(Math.random() * words.length);
             h2.innerHTML = words.map((w, i) => i === idx ? `<span class="accent-word">${w}</span>` : w).join(' ');
