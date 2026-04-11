@@ -11,7 +11,7 @@ const links = [
 <nav class="fixed top-0 left-0 right-0 z-50" id="navbar">
   <div class="max-w-[1400px] mx-auto px-4 md:px-8 py-4 md:py-6 flex items-center justify-between">
     <!-- Logo — smaller on mobile -->
-    <a href="/" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center gap-0 text-xl md:text-4xl tracking-tight cursor-pointer" data-hover>
+    <a href="/" onclick="event.preventDefault(); window.history.replaceState({}, '', '/'); window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center gap-0 text-xl md:text-4xl tracking-tight cursor-pointer" data-hover>
       <span class="relative font-bold text-white" style="font-family: 'Inter', sans-serif;">hezké<img src="/icon-cursor.png" alt="" class="absolute -top-1.5 md:-top-3.5 -right-1.5 md:-right-3 h-5 md:h-10 object-contain logo-cursor" /></span>
       <span class="font-light text-white ml-1 md:ml-2.5" style="font-family: 'Nunito', sans-serif;">webovky</span>
     </a>
