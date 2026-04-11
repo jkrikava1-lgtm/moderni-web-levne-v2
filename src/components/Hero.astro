@@ -76,12 +76,18 @@ import hero from '../content/hero.json';
       let i = 0;
       setTimeout(() => {
         const typeInterval = setInterval(() => {
-          // Insert character before cursor
           cursor.before(fullText[i]);
           i++;
           if (i >= fullText.length) {
             clearInterval(typeInterval);
             setTimeout(() => cursor.remove(), 1000);
+
+            // Trigger glitch on H1 for 3 seconds after typing finishes
+            const h1 = document.querySelector('h1');
+            if (h1) {
+              h1.classList.add('glitch-active');
+              setTimeout(() => h1.classList.remove('glitch-active'), 3000);
+            }
           }
         }, 25);
       }, 2800);
