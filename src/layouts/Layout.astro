@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Profesionální webové stránky za férovou cenu. Tvorba webů na míru pro firmy a živnostníky. Od 9 900 Kč.' } = Astro.props;
+const { title, description = 'Tvoříme moderní weby pro firmy a živnostníky — na míru, s rychlým načtením a bez zbytečné složitosti. Ceny od 9 900 Kč, hotovo do 3 týdnů.' } = Astro.props;
 const siteUrl = 'https://hezkewebovky.cz';
 const ogImage = `${siteUrl}/og-image-v2.png`;
 ---
@@ -74,19 +74,46 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
 
     <title>{title}</title>
 
-    <!-- Structured Data -->
+    <!-- Structured Data: LocalBusiness -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
+      "@type": "LocalBusiness",
       "name": "Hezké webovky",
-      "description": "Tvorba profesionálních webových stránek za férovou cenu. Weby na míru pro firmy a živnostníky.",
+      "description": "Tvorba profesionálních webových stránek za férovou cenu. Weby na míru pro firmy, živnostníky a řemeslníky. Ceny od 9 900 Kč, hotovo do 3 týdnů.",
       "url": siteUrl,
       "telephone": "+420777724573",
       "email": "info@hezkewebovky.cz",
-      "priceRange": "od 9 900 Kč",
-      "areaServed": "CZ",
-      "serviceType": ["Tvorba webových stránek", "Redesign webu", "SEO optimalizace", "Správa webů"],
-      "sameAs": []
+      "priceRange": "9 900 Kč – 50 000 Kč",
+      "areaServed": { "@type": "Country", "name": "Česká republika" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Webové služby",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tvorba webových stránek na míru" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Redesign webu" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO optimalizace" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Správa a údržba webu" } }
+        ]
+      },
+      "sameAs": [
+        "https://www.facebook.com/hezkewebovky",
+        "https://www.instagram.com/hezkewebovky"
+      ]
+    })} />
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Kolik stojí vytvoření webových stránek?", "acceptedAnswer": { "@type": "Answer", "text": "Cena za kompletní web začíná na 9 900 Kč. V ceně je návrh designu, programování, základní SEO optimalizace a nasazení. Přesnou cenu vždy dohodnu předem — žádné skryté poplatky." } },
+        { "@type": "Question", "name": "Jak dlouho trvá vytvoření webu?", "acceptedAnswer": { "@type": "Answer", "text": "Standardní web hotový do 3 týdnů od schválení návrhu. Termín vždy dohodnu předem." } },
+        { "@type": "Question", "name": "Pro koho weby tvořím?", "acceptedAnswer": { "@type": "Answer", "text": "Primárně pro živnostníky, řemeslníky a malé firmy, které potřebují profesionální web bez agenturnich cen — elektrikáři, instalatéři, restaurace, kosmetičky nebo e-shopy." } },
+        { "@type": "Question", "name": "Co je součástí ceny webu?", "acceptedAnswer": { "@type": "Answer", "text": "Návrh a programování webu na míru, mobilní verze (responzivní design), základní SEO optimalizace, nasazení na server, zaškolení a podpora po spuštění." } },
+        { "@type": "Question", "name": "Musím platit měsíční poplatky za web?", "acceptedAnswer": { "@type": "Answer", "text": "Ne. Platíte jednorázově za hotový web. Jediné pravidelné náklady jsou doména (cca 200 Kč/rok) a hosting (cca 500–1000 Kč/rok)." } },
+        { "@type": "Question", "name": "Dělám e-shopy?", "acceptedAnswer": { "@type": "Answer", "text": "Ano, menší e-shopy dělám. Pro větší projekty s tisíci produktů doporučím vhodné řešení a pomohu s nastavením." } }
+      ]
     })} />
     </script>
   </head>

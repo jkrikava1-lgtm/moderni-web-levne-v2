@@ -1,0 +1,38 @@
+{
+  "heading": "Časté",
+  "heading_accent": "otázky",
+  "items": [
+    {
+      "q": "Kolik stojí vytvoření webových stránek?",
+      "a": "Cena za kompletní web začíná na 9 900 Kč. V ceně je návrh designu, programování, základní SEO optimalizace a nasazení. Přesnou cenu vždy dohodnu předem — žádné skryté poplatky."
+    },
+    {
+      "q": "Jak dlouho trvá vytvoření webu?",
+      "a": "Standardní web hotový do 3 týdnů od schválení návrhu. Záleží na rozsahu a rychlosti vaší zpětné vazby. Termín vždy dohodnu předem."
+    },
+    {
+      "q": "Pro koho weby tvořím?",
+      "a": "Primárně pro živnostníky, řemeslníky a malé firmy, které potřebují profesionální web bez agenturnich cen. Klienti jsou třeba elektrikáři, instalatéři, restaurace, kosmetičky nebo e-shopy."
+    },
+    {
+      "q": "Co je součástí ceny?",
+      "a": "Návrh a programování webu na míru, mobilní verze (responzivní design), základní SEO optimalizace, nasazení na server a doménu, zaškolení jak web upravovat a podpora po spuštění."
+    },
+    {
+      "q": "Musím platit měsíční poplatky?",
+      "a": "Ne. Platíte jednorázově za hotový web. Jediné pravidelné náklady jsou doména (~200 Kč/rok) a hosting (~500–1000 Kč/rok) — to si spravujete sami nebo vám pomůžu s nastavením."
+    },
+    {
+      "q": "Budu web moci sám upravovat?",
+      "a": "Ano. Po spuštění vás zaškolím, jak sami měnit texty, fotky nebo ceny. Pro větší úpravy jsem tu pro vás za hodinovou sazbu."
+    },
+    {
+      "q": "Dělám e-shopy?",
+      "a": "Ano, menší e-shopy dělám. Pro větší projekty s tisíci produktů doporučím vhodné řešení (Shoptet, WooCommerce apod.) a pomohu s nastavením."
+    },
+    {
+      "q": "Jak začít spolupráci?",
+      "a": "Napište mi nebo zavolejte. Domluvíme si krátký hovor, kde probereme co potřebujete, a já připravím nezávaznou nabídku."
+    }
+  ]
+}

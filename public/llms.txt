@@ -1,0 +1,43 @@
+# Hezké webovky
+
+> Tvorba profesionálních webových stránek pro firmy, živnostníky a řemeslníky. Ceny od 9 900 Kč, hotovo do 3 týdnů.
+
+## Co dělám
+
+- Weby na míru pro malé firmy a živnostníky
+- Redesign zastaralých webů
+- SEO optimalizace pro lokální vyhledávání
+- Správa a údržba webů po spuštění
+
+## Ceny
+
+- Kompletní web na míru: od 9 900 Kč (jednorázová platba, bez měsíčních poplatků)
+- Redesign: od 6 900 Kč
+- Správa webu: hodinová sazba po dohodě
+
+## Proces
+
+1. Bezplatná konzultace (telefonát nebo online)
+2. Návrh designu a schválení
+3. Programování webu (Astro, moderní technologie)
+4. Spuštění, nasazení, zaškolení
+
+## Pro koho
+
+Živnostníci, řemeslníci (elektrikáři, instalatéři, malíři), restaurace, kavárny, kosmetičky, menší firmy — kdo potřebuje profesionální web bez agenturních cen.
+
+## Reference
+
+- uspornevytapeni.cz — specialista na tepelná čerpadla
+- unionpower.cz — lisovna plastů
+- 2brothers.cz — DJ duo
+
+## Kontakt
+
+- Web: https://hezkewebovky.cz
+- E-mail: info@hezkewebovky.cz
+- Telefon: +420 777 724 573
+
+## Technologie
+
+Weby stavím na Astro frameworku s Tailwind CSS. Výsledek: rychlé načítání, skvělé Core Web Vitals, statický hosting (Vercel).

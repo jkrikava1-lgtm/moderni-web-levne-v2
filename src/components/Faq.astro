@@ -1,0 +1,30 @@
+---
+import data from '../content/faq.json';
+---
+
+<section id="faq" class="py-24 md:py-32 border-t border-dark-border">
+  <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+    <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-4 reveal">FAQ</div>
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-16 reveal">
+      {data.heading}<br/><span class="text-accent"> {data.heading_accent}</span>
+    </h2>
+
+    <div class="max-w-3xl">
+      {data.items.map((item, i) => (
+        <details class={`group border-b border-dark-border reveal reveal-delay-${Math.min(i, 3)}`}>
+          <summary class="flex items-center justify-between gap-4 py-5 cursor-pointer list-none text-base md:text-lg font-medium hover:text-accent transition-colors">
+            {item.q}
+            <span class="shrink-0 w-5 h-5 text-accent transition-transform duration-300 group-open:rotate-45">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/>
+              </svg>
+            </span>
+          </summary>
+          <p class="pb-5 text-text-secondary leading-relaxed text-base">
+            {item.a}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
