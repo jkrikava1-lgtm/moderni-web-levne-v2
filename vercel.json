@@ -1,5 +1,13 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".vercel/output",
-  "framework": "astro"
+  "framework": "astro",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "hezke-webovky.cz" }],
+      "destination": "https://hezkewebovky.cz/:path*",
+      "permanent": true
+    }
+  ]
 }
