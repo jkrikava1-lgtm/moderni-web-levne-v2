@@ -1,11 +1,11 @@
 ---
 const links = [
-  { label: 'Služby', href: '#sluzby' },
-  { label: 'Cena', href: '#cena' },
-  { label: 'Ukázky', href: '#ukazky' },
-  { label: 'Jak na to', href: '#jaknato' },
+  { label: 'Služby', href: '/#sluzby' },
+  { label: 'Cena', href: '/#cena' },
+  { label: 'Ukázky', href: '/#ukazky' },
+  { label: 'Jak na to', href: '/#jaknato' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Kontakt', href: '#kontakt' },
+  { label: 'Kontakt', href: '/#kontakt' },
 ];
 ---
 
@@ -32,7 +32,7 @@ const links = [
 
     <!-- CTA — hidden on small mobile -->
     <a
-      href="#kontakt"
+      href="/#kontakt"
       class="hidden lg:inline-flex magnetic-btn px-5 py-2.5 bg-accent text-black rounded-full text-xs tracking-widest uppercase font-semibold hover:bg-white transition-all duration-500"
       data-hover
     >
@@ -53,7 +53,7 @@ const links = [
       {links.map(({ label, href }) => (
         <a href={href} class="text-white/70 text-base py-2 hover:text-white transition-colors">{label}</a>
       ))}
-      <a href="#kontakt" class="mt-2 px-5 py-3 bg-accent text-black text-center text-sm font-medium rounded-lg">
+      <a href="/#kontakt" class="mt-2 px-5 py-3 bg-accent text-black text-center text-sm font-medium rounded-lg">
         Chci hezký web
       </a>
     </div>
