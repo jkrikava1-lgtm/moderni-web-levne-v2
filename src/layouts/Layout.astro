@@ -160,8 +160,8 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
 
     <!-- Loading screen — desktop only via JS -->
     {!noLoader && (
-      <div class="loader" id="loader">
-        <div class="loader-counter" id="loader-counter">0<span>%</span></div>
+      <div class="loader hidden" id="loader">
+        <div class="loader-counter" id="loader-counter"></div>
       </div>
     )}
 
@@ -189,10 +189,10 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
       // === LOADER ===
       const loader = document.getElementById('loader');
       if (loader) {
-        if (!isDesktop || window.location.hash) {
-          loader.classList.add('hidden');
-        } else {
+        if (isDesktop && !window.location.hash) {
+          loader.classList.remove('hidden');
           const counter = document.getElementById('loader-counter');
+          counter.innerHTML = `0<span>%</span>`;
           let count = 0;
           const interval = setInterval(() => {
             count += Math.floor(Math.random() * 8) + 2;
