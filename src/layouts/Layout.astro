@@ -189,7 +189,7 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
       // === LOADER ===
       const loader = document.getElementById('loader');
       if (loader) {
-        if (!isDesktop) {
+        if (!isDesktop || window.location.hash) {
           loader.classList.add('hidden');
         } else {
           const counter = document.getElementById('loader-counter');
