@@ -136,7 +136,10 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
     <div id="cookie-modal" class="fixed inset-0 z-[10000] hidden">
       <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
       <div class="absolute bottom-0 left-0 right-0 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:w-full sm:max-w-lg bg-dark-card border border-dark-border sm:rounded-xl shadow-2xl p-6">
-        <h3 class="text-xl font-bold text-white mb-1">Nastavení cookies</h3>
+        <div class="flex items-start justify-between mb-1">
+          <h3 class="text-xl font-bold text-white">Nastavení cookies</h3>
+          <span class="text-xs text-text-secondary pt-1.5"><span id="active-count">2</span> z 2 aktivní</span>
+        </div>
         <p class="text-sm text-text-secondary mb-6">Vyberte, které cookies povolíte. Nezbytné jsou vždy aktivní.</p>
         <div class="space-y-4 mb-6">
           <div class="flex items-start justify-between gap-4 py-3 border-b border-dark-border">
@@ -149,9 +152,10 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
             </div>
           </div>
           <div class="flex items-start justify-between gap-4 py-3">
-            <div>
+            <div class="flex-1">
               <p class="text-sm font-semibold text-white/80">Analytické <span class="text-xs text-accent font-normal ml-1">(doporučeno)</span></p>
               <p class="text-xs text-text-secondary mt-0.5">Google Analytics — pomáhají nám zlepšovat web.</p>
+              <p id="analytics-warning" class="hidden text-xs text-amber-400/80 mt-1.5">Bez analytiky nemůžeme sledovat, co vám chybí, a web zlepšovat pro vás.</p>
             </div>
             <button id="toggle-analytics" role="switch" aria-checked="true"
               class="flex-shrink-0 w-10 h-6 rounded-full transition-colors duration-200 bg-accent relative mt-0.5">
@@ -159,9 +163,18 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
             </button>
           </div>
         </div>
-        <div class="flex gap-3">
-          <button id="cookie-save" class="flex-1 py-2.5 text-sm font-bold text-black bg-accent hover:bg-white rounded-lg transition-all">Uložit nastavení</button>
-          <button id="cookie-accept-all" class="flex-1 py-2.5 text-sm font-semibold text-text-secondary border border-dark-border hover:text-white hover:border-text-secondary rounded-lg transition-all">Přijmout vše</button>
+        <div id="normal-buttons">
+          <div class="flex gap-3">
+            <button id="cookie-save" class="flex-1 py-2.5 text-sm font-bold text-black bg-accent hover:bg-white rounded-lg transition-all">Uložit nastavení</button>
+            <button id="cookie-accept-all" class="flex-1 py-2.5 text-sm font-semibold text-text-secondary border border-dark-border hover:text-white hover:border-text-secondary rounded-lg transition-all">Přijmout vše</button>
+          </div>
+        </div>
+        <div id="confirm-area" class="hidden">
+          <div class="bg-dark-card border border-dark-border rounded-lg p-4">
+            <p class="text-sm text-text-secondary text-center mb-3">Opravdu chcete omezit naše možnosti zlepšování webu?</p>
+            <button id="confirm-accept" class="w-full py-2.5 text-sm font-bold text-black bg-accent hover:bg-white rounded-lg transition-all mb-2">Přijmout doporučené cookies</button>
+            <button id="confirm-reject" class="w-full py-1.5 text-xs text-text-secondary/50 hover:text-text-secondary transition-colors">Pokračovat bez analytiky</button>
+          </div>
         </div>
       </div>
     </div>
@@ -169,6 +182,7 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
     <script is:inline>
       (function() {
         var analyticsOn = true;
+        var confirmStep = false;
         var banner = document.getElementById('cookie-banner');
         var saved = localStorage.getItem('cookie-consent');
         if (saved === 'accepted' || saved === 'analytics') {
@@ -193,15 +207,50 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
         });
         document.getElementById('toggle-analytics')?.addEventListener('click', function() {
           analyticsOn = !analyticsOn;
+          confirmStep = false;
           this.classList.toggle('bg-accent', analyticsOn);
           this.classList.toggle('bg-dark-border', !analyticsOn);
           var k = document.getElementById('toggle-knob');
           k.classList.toggle('right-1', analyticsOn);
           k.classList.toggle('left-1', !analyticsOn);
+          this.setAttribute('aria-checked', String(analyticsOn));
+          var cnt = document.getElementById('active-count');
+          if (cnt) cnt.textContent = analyticsOn ? '2' : '1';
+          var warn = document.getElementById('analytics-warning');
+          if (warn) warn.classList.toggle('hidden', analyticsOn);
+          var saveBtn = document.getElementById('cookie-save');
+          if (saveBtn) {
+            if (analyticsOn) {
+              saveBtn.textContent = 'Uložit nastavení';
+              saveBtn.className = 'flex-1 py-2.5 text-sm font-bold text-black bg-accent hover:bg-white rounded-lg transition-all';
+            } else {
+              saveBtn.textContent = 'Uložit bez doporučených';
+              saveBtn.className = 'flex-1 py-2.5 text-sm font-semibold text-text-secondary/50 bg-dark-border rounded-lg transition-all';
+            }
+          }
+          document.getElementById('confirm-area').classList.add('hidden');
+          document.getElementById('normal-buttons').classList.remove('hidden');
         });
         document.getElementById('cookie-save')?.addEventListener('click', function() {
-          localStorage.setItem('cookie-consent', analyticsOn ? 'analytics' : 'rejected');
-          if (analyticsOn && typeof gtag === 'function') gtag('consent', 'update', { 'analytics_storage': 'granted' });
+          if (analyticsOn) {
+            localStorage.setItem('cookie-consent', 'analytics');
+            if (typeof gtag === 'function') gtag('consent', 'update', { 'analytics_storage': 'granted' });
+            hideBanner();
+            return;
+          }
+          if (!confirmStep) {
+            confirmStep = true;
+            document.getElementById('normal-buttons').classList.add('hidden');
+            document.getElementById('confirm-area').classList.remove('hidden');
+          }
+        });
+        document.getElementById('confirm-accept')?.addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'accepted');
+          if (typeof gtag === 'function') gtag('consent', 'update', { 'analytics_storage': 'granted' });
+          hideBanner();
+        });
+        document.getElementById('confirm-reject')?.addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'rejected');
           hideBanner();
         });
         document.getElementById('cookie-modal')?.addEventListener('click', function(e) {
